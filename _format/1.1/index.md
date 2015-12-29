@@ -631,6 +631,13 @@ The following characters **MUST NOT** be used in member names:
 - U+007F DELETE
 - U+0000 to U+001F (C0 Controls)
 
+#### <a href="#document-member-names-jsonld" id="document-member-names-jsonld" class="headerlink"></a> JSON-LD Exception
+
+When a JSON API document is [served as JSON-LD](http://www.w3.org/TR/json-ld/#interpreting-json-as-json-ld),
+the document **MAY** include member names that begin with an at sign
+(U+0040 COMMERCIAL AT, "@") to convey JSON-LD information. JSON API processers
+that don't understand JSON-LD **MUST** ignore these members.
+
 ## <a href="#fetching" id="fetching" class="headerlink"></a> Fetching Data
 
 Data, including resources and relationships, can be fetched by sending a

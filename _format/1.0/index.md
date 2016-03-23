@@ -2,116 +2,219 @@
 version: 1.0
 ---
 
-## <a href="#introduction" id="introduction" class="headerlink"></a> Introduction
+## <a href="#introduction" id="introduction" class="headerlink"></a> 介绍
 
-JSON API is a specification for how a client should request that resources be
-fetched or modified, and how a server should respond to those requests.
+是一个规范，它定义了客户端应该如何获取与修改资源，以及服务器应该如何响应客户端的请求。
+{% comment %}
+JSON API is a specification for how a client should request that resources be fetched or modified, and how a server should respond to those requests.
+{% endcomment %}
 
+JSON API 的设计尽可能减少请求量和客户端与服务器间传输的数据量。而且在实现高效的同时，无需牺牲可读性、灵活性和可发现性。
+{% comment %}
 JSON API is designed to minimize both the number of requests and the amount of
 data transmitted between clients and servers. This efficiency is achieved
 without compromising readability, flexibility, or discoverability.
+{% endcomment %}
 
+JSON API需要使用JSON API媒体类型([`application/vnd.api+json`](http://www.iana.org/assignments/media-types/application/vnd.api+json)) 进行数据交互。
+{% comment %}
 JSON API requires use of the JSON API media type
 ([`application/vnd.api+json`](http://www.iana.org/assignments/media-types/application/vnd.api+json))
 for exchanging data.
+{% endcomment %}
 
-## <a href="#conventions" id="conventions" class="headerlink"></a> Conventions
+## <a href="#conventions" id="conventions" class="headerlink"></a> 约定
 
+文档中的关键词，*MUST*，*MUST NOT*，*REQUIRED*，*SHALL*，*SHALL NOT*，*SHOULD*，*SHOULD NOT*，*RECOMMENDED*，*MAY*和*OPTIONAL*的具体描述在[RFC2119](http://tools.ietf.org/html/rfc2119)中。
+{% comment %}
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in RFC 2119
 [[RFC2119](http://tools.ietf.org/html/rfc2119)].
+{% endcomment %}
 
-## <a href="#content-negotiation" id="content-negotiation" class="headerlink"></a> Content Negotiation
+### 附RFC 2119中对表示要求的动词的说明
+1. **MUST**
+表示绝对要这样做，**REQUIRED**或者**SHALL**与其同义，在翻译时应统一译为：**必须**。
 
-### <a href="#content-negotiation-clients" id="content-negotiation-clients" class="headerlink"></a> Client Responsibilities
+2. **MUST NOT**
+表示绝对不要这样做，**SHALL NOT**与其同义，在翻译时应统一译为：**不能**。
 
+3. **SHOULD**
+表示一般情况下应该这样做，但是某些特定情况下可以忽视这个要求。**RECOMMENDED**与其同义，在翻译时统一译为：**应该**。
+
+4. **SHOULD NOT**
+表示一般情况下不应该这样做，但是在某些特定情况下可以忽视这个要求。**NOT RECOMMENDED**与之同义，在翻译时统一译为：**不应该**。
+
+5. **MAY**
+表示这个要求完全是可选的，你可以这样做，也可以不这样做。**OPTIONAL**与之同义，在翻译时统一译为：**可以**
+
+## <a href="#content-negotiation" id="content-negotiation" class="headerlink"></a> 内容协定
+
+### <a href="#content-negotiation-clients" id="content-negotiation-clients" class="headerlink"></a> 客户端的职责
+
+客户端在发送JSON API数据的请求文档时，**必须**在HTTP头附加上`Content-Type: application/vnd.api+json`，但不能添加任何的媒体类型参数。
+{% comment %}
 Clients **MUST** send all JSON API data in request documents with the header
 `Content-Type: application/vnd.api+json` without any media type parameters.
+{% endcomment %}
 
+在`Accept`头中包含了JSON API媒体类型的客户端**必须**至少指定一次媒体类型，但不能添加任何的媒体类型参数。
+{% comment %}
 Clients that include the JSON API media type in their `Accept` header **MUST**
 specify the media type there at least once without any media type parameters.
+{% endcomment %}
 
+客户端在接收到`Content-Type`头含有`application/vnd.api+json`媒体类型的响应文档时，**必须**忽略其所有的参数。
+{% comment %}
 Clients **MUST** ignore any parameters for the `application/vnd.api+json`
 media type received in the `Content-Type` header of response documents.
+{% endcomment %}
 
-### <a href="#content-negotiation-servers" id="content-negotiation-servers" class="headerlink"></a> Server Responsibilities
+### <a href="#content-negotiation-servers" id="content-negotiation-servers" class="headerlink"></a> 服务器的职责
 
+服务器发送的所有包含JSON API数据的文档**必须**在HTTP头中添加`Content-Type: application/vnd.api+json`，但不能添加任何的媒体类型参数。
+{% comment %}
 Servers **MUST** send all JSON API data in response documents with the header
 `Content-Type: application/vnd.api+json` without any media type parameters.
+{% endcomment %}
 
+服务器若收到了在指定`Content-Type: application/vnd.api+json`的同时，还包含了任意媒体类型参数的请求，**必须**返回`415 Unsupported Media Type`状态码。
+{% comment %}
 Servers **MUST** respond with a `415 Unsupported Media Type` status code if
 a request specifies the header `Content-Type: application/vnd.api+json`
 with any media type parameters.
+{% endcomment %}
 
+服务器若收到了`Accept`头中含有JSON API或其他媒体类型，但却被媒体类型参数修改的请求时，**必须**返回`406 Not Acceptable`状态码。
+{% comment %}
 Servers **MUST** respond with a `406 Not Acceptable` status code if a
 request's `Accept` header contains the JSON API media type and all instances
 of that media type are modified with media type parameters.
+{% endcomment %}
 
+> 说明：内容协定需要存在于该规范的将来的版本中，需要使用媒体参数来扩展协定或协商版本。
+{% comment %}
 > Note: The content negotiation requirements exist to allow future versions
 of this specification to use media type parameters for extension negotiation
 and versioning.
+{% endcomment %}
 
-## <a href="#document-structure" id="document-structure" class="headerlink"></a> Document Structure
+## <a href="#document-structure" id="document-structure" class="headerlink"></a> 文档结构
 
+这一章节描述JSON API文档结构，该结构通过媒体类型([application/vnd.api+json](http://www.iana.org/assignments/media-types/application/vnd.api+json)) 标识。JSON API文档使用JavaScript Object Notation[[RFC4627](http://tools.ietf.org/html/rfc7159)]定义。
+{% comment %}
 This section describes the structure of a JSON API document, which is identified
 by the media type [`application/vnd.api+json`]
 (http://www.iana.org/assignments/media-types/application/vnd.api+json).
 JSON API documents are defined in JavaScript Object Notation (JSON)
 [[RFC7159](http://tools.ietf.org/html/rfc7159)].
+{% endcomment %}
 
+尽管请求和响应文档都使用同样的媒体类型，但某些特性只适用于其中一种。下面描述它们之间的差异。
+{% comment %}
 Although the same media type is used for both request and response documents,
 certain aspects are only applicable to one or the other. These differences are
 called out below.
+{% endcomment %}
 
+除非另有说明，否则本规范中定义的对象**不能**包含任何附加的成员，客户端和服务器的实现也**必须**忽略规范不认可的成员。
+{% comment %}
 Unless otherwise noted, objects defined by this specification **MUST NOT**
 contain any additional members. Client and server implementations **MUST**
 ignore members not recognized by this specification.
+{% endcomment %}
 
+> 说明：这些条件允许通过本规范通过累积修改来衍变。
+{% comment %}
 > Note: These conditions allow this specification to evolve through additive
 changes.
+{% endcomment %}
 
-### <a href="#document-top-level" id="document-top-level" class="headerlink"></a> Top Level
+### <a href="#document-top-level" id="document-top-level" class="headerlink"></a> 顶级
 
+每个JSON API请求或响应数据的根**必须**有一个JSON对象。这个对象定义文档的“顶级”。
+{% comment %}
 A JSON object **MUST** be at the root of every JSON API request and response
 containing data. This object defines a document's "top level".
+{% endcomment %}
 
+文档**必须**至少包含一个下列的顶级成员：
+{% comment %}
 A document **MUST** contain at least one of the following top-level members:
+{% endcomment %}
 
+- `data`：文档的“主数据”
+- `errors`：[错误对象](#errors)的数组
+- `meta`：[元对象][meta]，它包含非标准的元信息
+{% comment %}
 * `data`: the document's "primary data"
 * `errors`: an array of [error objects](#errors)
 * `meta`: a [meta object][meta] that contains non-standard
   meta-information.
-
+{% endcomment %}
+  
+成员`data`和`errors`**不能**同时存在一个文档中。
+{% comment %}
 The members `data` and `errors` **MUST NOT** coexist in the same document.
+{% endcomment %}
 
+文档**可以**包含下列几个顶级成员：
+{% comment %}
 A document **MAY** contain any of these top-level members:
+{% endcomment %}
 
+- `jsonapi`：描述服务器实现的对象
+- `links`：与主数据有关的[链接对象][links]
+- `included`：与主数据 和/或 彼此有关的[资源对象][resource objects]数组（包含资源）
+{% comment %}
 * `jsonapi`: an object describing the server's implementation
 * `links`: a [links object][links] related to the primary data.
 * `included`: an array of [resource objects] that are related to the primary
   data and/or each other ("included resources").
+{% endcomment %}
 
+如果文档没有包含顶级`data`键（成员），那么`include`成员则**不能**出现在文档中。
+{% comment %}
 If a document does not contain a top-level `data` key, the `included` member
 **MUST NOT** be present either.
+{% endcomment %}
 
+顶级[链接对象][links]**可以**包含下列成员：
+{% comment %}
 The top-level [links object][links] **MAY** contain the following members:
+{% endcomment %}
 
+- `self`：当前响应文档的[链接][links]
+- `related`：当主数据可以表示成一种资源关系，使用[相关资源链接][related resource link]来描述它
+- 主数据的[分页][pagination]链接。
+{% comment %}
 * `self`: the [link][links] that generated the current response document.
 * `related`: a [related resource link] when the primary data represents a
   resource relationship.
 * [pagination] links for the primary data.
+{% endcomment %}
 
+文档中的“主数据”指请求的资源或资源集合。
+{% comment %}
 The document's "primary data" is a representation of the resource or collection
 of resources targeted by a request.
+{% endcomment %}
 
+主数据**必须**是：
+{% comment %}
 Primary data **MUST** be either:
+{% endcomment %}
 
+- 对单个资源的请求：单一[资源对象][resource objects]，单一[资源标识对象][resource identifier object]，或者`null`
+- 对资源集合的请求：*资源对象*数组，*资源标识对象*数组，或者空数组（`[]`）
+{% comment %}
 * a single [resource object][resource objects], a single [resource identifier object], or `null`,
   for requests that target single resources
 * an array of [resource objects], an array of
   [resource identifier objects][resource identifier object], or
   an empty array (`[]`), for requests that target resource collections
+{% endcomment %}
 
 For example, the following primary data is a single resource object:
 

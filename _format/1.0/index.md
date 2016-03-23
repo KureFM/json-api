@@ -2,7 +2,7 @@
 version: 1.0
 ---
 
-## <a href="#introduction" id="introduction" class="headerlink"></a> 介绍
+## <a href="#introduction" id="introduction" class="headerlink"></a> 介绍{% comment %}Introduction{% endcomment %}
 
 是一个规范，它定义了客户端应该如何获取与修改资源，以及服务器应该如何响应客户端的请求。
 {% comment %}
@@ -23,7 +23,7 @@ JSON API requires use of the JSON API media type
 for exchanging data.
 {% endcomment %}
 
-## <a href="#conventions" id="conventions" class="headerlink"></a> 约定
+## <a href="#conventions" id="conventions" class="headerlink"></a> 约定{% comment %}Conventions{% endcomment %}
 
 文档中的关键词，*MUST*，*MUST NOT*，*REQUIRED*，*SHALL*，*SHALL NOT*，*SHOULD*，*SHOULD NOT*，*RECOMMENDED*，*MAY*和*OPTIONAL*的具体描述在[RFC2119](http://tools.ietf.org/html/rfc2119)中。
 {% comment %}
@@ -49,9 +49,9 @@ interpreted as described in RFC 2119
 5. **MAY**
 表示这个要求完全是可选的，你可以这样做，也可以不这样做。**OPTIONAL**与之同义，在翻译时统一译为：**可以**
 
-## <a href="#content-negotiation" id="content-negotiation" class="headerlink"></a> 内容协定
+## <a href="#content-negotiation" id="content-negotiation" class="headerlink"></a> 内容协定{% comment %}Content Negotiation{% endcomment%}
 
-### <a href="#content-negotiation-clients" id="content-negotiation-clients" class="headerlink"></a> 客户端的职责
+### <a href="#content-negotiation-clients" id="content-negotiation-clients" class="headerlink"></a> 客户端的职责{% comment %}Client Responsibilities{% endcomment %}
 
 客户端在发送JSON API数据的请求文档时，**必须**在HTTP头附加上`Content-Type: application/vnd.api+json`，但不能添加任何的媒体类型参数。
 {% comment %}
@@ -71,7 +71,7 @@ Clients **MUST** ignore any parameters for the `application/vnd.api+json`
 media type received in the `Content-Type` header of response documents.
 {% endcomment %}
 
-### <a href="#content-negotiation-servers" id="content-negotiation-servers" class="headerlink"></a> 服务器的职责
+### <a href="#content-negotiation-servers" id="content-negotiation-servers" class="headerlink"></a> 服务器的职责{% comment %}Server Responsibilities{% endcomment %}
 
 服务器发送的所有包含JSON API数据的文档**必须**在HTTP头中添加`Content-Type: application/vnd.api+json`，但不能添加任何的媒体类型参数。
 {% comment %}
@@ -100,7 +100,7 @@ of this specification to use media type parameters for extension negotiation
 and versioning.
 {% endcomment %}
 
-## <a href="#document-structure" id="document-structure" class="headerlink"></a> 文档结构
+## <a href="#document-structure" id="document-structure" class="headerlink"></a> 文档结构{% comment %}Document Structure{% endcomment %}
 
 这一章节描述JSON API文档结构，该结构通过媒体类型([application/vnd.api+json](http://www.iana.org/assignments/media-types/application/vnd.api+json)) 标识。JSON API文档使用JavaScript Object Notation[[RFC4627](http://tools.ietf.org/html/rfc7159)]定义。
 {% comment %}
@@ -131,7 +131,7 @@ ignore members not recognized by this specification.
 changes.
 {% endcomment %}
 
-### <a href="#document-top-level" id="document-top-level" class="headerlink"></a> 顶级
+### <a href="#document-top-level" id="document-top-level" class="headerlink"></a> 顶级{% comment %}Top Level{% endcomment %}
 
 每个JSON API请求或响应数据的根**必须**有一个JSON对象。这个对象定义文档的“顶级”。
 {% comment %}
@@ -206,8 +206,8 @@ of resources targeted by a request.
 Primary data **MUST** be either:
 {% endcomment %}
 
-- 对单个资源的请求：单一[资源对象][resource objects]，单一[资源标识对象][resource identifier object]，或者`null`
-- 对资源集合的请求：*资源对象*数组，*资源标识对象*数组，或者空数组（`[]`）
+- 对于单个资源的请求：单一[资源对象][resource objects]，单一[资源标识对象][resource identifier object]，或者`null`
+- 对于资源集合的请求：[资源对象][resource objects]数组，[资源标识对象][resource identifier object]数组，或者空数组（`[]`）
 {% comment %}
 * a single [resource object][resource objects], a single [resource identifier object], or `null`,
   for requests that target single resources
@@ -216,9 +216,12 @@ Primary data **MUST** be either:
   an empty array (`[]`), for requests that target resource collections
 {% endcomment %}
 
+例如，下面的主数据是单一*资源对象*：
+{% comment %}
 For example, the following primary data is a single resource object:
+{% endcomment %}
 
-```json
+``` json
 {
   "data": {
     "type": "articles",
@@ -233,8 +236,11 @@ For example, the following primary data is a single resource object:
 }
 ```
 
+下面的主数据是单一[资源标识对象][resource identifier object]，它表示了和上面同样的资源：
+{% comment %}
 The following primary data is a single [resource identifier object] that
 references the same resource:
+{% endcomment %}
 
 ```json
 {
@@ -245,31 +251,55 @@ references the same resource:
 }
 ```
 
+资源的逻辑集合**必须**表示为一个数组，即使它只包含一项或为空。
+{% comment %}
 A logical collection of resources **MUST** be represented as an array, even if
 it only contains one item or is empty.
+{% endcomment %}
 
-### <a href="#document-resource-objects" id="document-resource-objects" class="headerlink"></a> Resource Objects
+### <a href="#document-resource-objects" id="document-resource-objects" class="headerlink"></a> 资源对象{% comment %}Resource Objects{% endcomment %}
 
+“资源对象”被用来在JSON API文档中表示资源。
+{% comment %}
 "Resource objects" appear in a JSON API document to represent resources.
+{% endcomment %}
 
+资源对象**必须**至少包含以下顶级成员：
+{% comment %}
 A resource object **MUST** contain at least the following top-level members:
+{% endcomment %}
 
 * `id`
 * `type`
 
+例外：当资源对象源于客户端或者是用于表示即将要在服务器上创建的新资源时，`id`成员不是必须的。
+{% comment %}
 Exception: The `id` member is not required when the resource object originates at
 the client and represents a new resource to be created on the server.
+{% endcomment %}
 
+此外，*资源对象***可以**包含下列任意的顶级成员：
+{% comment %}
 In addition, a resource object **MAY** contain any of these top-level members:
+{% endcomment %}
 
+- `attributes`：[属性对象][attributes]表示该资源的一些数据
+- `relationships`：[关系对象][relationships]描述该资源与其他JSON API资源的关系
+- `links`：[连接对象][links]包含与该资源有关的链接
+- `meta`：[元对象][meta]包含与资源有关，但不能表示为属性或关系的非标准元信息
+{% comment %}
 * `attributes`: an [attributes object][attributes] representing some of the resource's data.
 * `relationships`: a [relationships object][relationships] describing relationships between
  the resource and other JSON API resources.
 * `links`: a [links object][links] containing links related to the resource.
 * `meta`: a [meta object][meta] containing non-standard meta-information about a
   resource that can not be represented as an attribute or relationship.
+{% endcomment %}
 
+下面展示了一篇文章（即类型为“articles”的资源）在文档中是怎么样的：
+{% comment %}
 Here's how an article (i.e. a resource of type "articles") might appear in a document:
+{% endcomment %}
 
 ```json
 // ...
@@ -292,24 +322,38 @@ Here's how an article (i.e. a resource of type "articles") might appear in a doc
 // ...
 ```
 
-#### <a href="#document-resource-object-identification" id="document-resource-object-identification" class="headerlink"></a> Identification
+#### <a href="#document-resource-object-identification" id="document-resource-object-identification" class="headerlink"></a> 标识符{% comment %}Identification{% endcomment %}
 
+每个[资源对象][resource objects]**必须**包含`id`成员和`type`成员。同时**必须**设置`id`和`type`成员的值。
+{% comment %}
 Every [resource object][resource objects] **MUST** contain an `id` member and a `type` member.
 The values of the `id` and `type` members **MUST** be strings.
+{% endcomment %}
 
+在给定的API中，每个资源对象`type`与`id`对**必须**表示一个唯一的资源。（URL的集合由一台服务器或者服务器集群控制，这些URL的集合构成了API。）
+{% comment %}
 Within a given API, each resource object's `type` and `id` pair **MUST**
 identify a single, unique resource. (The set of URIs controlled by a server,
 or multiple servers acting as one, constitute an API.)
+{% endcomment %}
 
+`type`成员用来描述拥有共同属性和关系的[资源对象][resource objects]。
+{% comment %}
 The `type` member is used to describe [resource objects] that share common
 attributes and relationships.
+{% endcomment %}
 
+`type`成员的值**必须**始终以同样约束作为[成员名称][member names]。
+{% comment %}
 The values of `type` members **MUST** adhere to the same constraints as
 [member names].
+{% endcomment %}
 
+{% comment %}
 > Note: This spec is agnostic about inflection rules, so the value of `type`
 can be either plural or singular. However, the same value should be used
 consistently throughout an implementation.
+{% endcomment %}
 
 #### <a href="#document-resource-object-fields" id="document-resource-object-fields" class="headerlink"></a> Fields
 

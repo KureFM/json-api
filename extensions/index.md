@@ -19,7 +19,7 @@ JSON API can be extended in several ways:
   be used to [negotiate support for extensions](#extension-negotiation).
 
 * Meta information can be included in several places in a document,
-  [as discussed in the base specification](/format/#document-structure-meta).
+  [as discussed in the base specification]({{ site.github.url }}/format/#document-structure-meta).
 
 * A profile can be specified in the top-level `meta` object, as discussed
   below.

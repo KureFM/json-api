@@ -111,15 +111,14 @@ type designation is [`application/vnd.api+json`](http://www.iana.org/assignments
 
 ## <a href="#format-documentation" id="format-documentation" class="headerlink"></a> Format documentation
 
-To get started with JSON API, check out [documentation for the base
-specification](/format).
+To get started with JSON API, check out [documentation for the base specification]({{ site.github.url }}/format).
 
 ## <a href="#extensions" id="extensions" class="headerlink"></a> Extensions
 
-JSON API has [experimental support for extensions](/extensions).
+JSON API has [experimental support for extensions]({{ site.github.url }}/extensions).
 
-Official extensions are being developed for [Bulk](/extensions/bulk/) and
-[JSON Patch](/extensions/jsonpatch/) operations.
+Official extensions are being developed for [Bulk]({{ site.github.url }}/extensions/bulk/) and
+[JSON Patch]({{ site.github.url }}/extensions/jsonpatch/) operations.
 
 ## <a href="#update-history" id="update-history" class="headerlink"></a> Update history
 

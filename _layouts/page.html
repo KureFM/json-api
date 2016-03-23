@@ -96,13 +96,13 @@
               <div id="version-picker-wrapper" class="sidebar-top">
                 <label for="version-picker">Version: </label>
                 <select class="version-picker" id="version-picker">
-                  <option value="/format/"
+                  <option value="{{ site.github.url }}/format/"
                     {% if page.is_latest_version %}selected{% endif %}
                   >
                     Latest Version (v{{ site.latest_version }})
                   </option>
                   <option
-                    value="/format/upcoming/"
+                    value="{{ site.github.url }}/format/upcoming/"
                     {% if page.is_upcoming_version %}selected{% endif %}
                   >
                     Upcoming Version (v{{ site.latest_version|plus:0.1 }})
@@ -110,7 +110,7 @@
                   <optgroup label="Old Versions/Permalinks">
                     {% for spec_draft in site.format|sort:'version' %}
                       {% if spec_draft.version and spec_draft.path contains 'index' %}
-                        <option value="/format/{{spec_draft.version}}"
+                        <option value="{{ site.github.url }}/format/{{spec_draft.version}}"
                           {% if page.version == spec_draft.version %}selected{% endif%}
                         >
                           v{{spec_draft.version}}

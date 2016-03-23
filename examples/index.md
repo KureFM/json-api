@@ -8,7 +8,7 @@ This page contains additional examples of how to apply various parts of the spec
 
 ## <a href="#sparse-fieldsets" id="sparse-fieldsets" class="headerlink"></a> Sparse Fieldsets
 
-Examples of how [sparse fieldsets](http://jsonapi.org/format/#fetching-sparse-fieldsets) work.
+Examples of how [sparse fieldsets]({{ site.github.url }}/format/#fetching-sparse-fieldsets) work.
 
 Basic request:
 

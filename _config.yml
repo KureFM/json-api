@@ -44,7 +44,7 @@ navigation:
 - title: JSON API
   url: ./
 - title: Specification
-  url: ./format/
+  url: {{ page.url | prepend: site.github.url }}/format/
 - title: Extensions
   url: ./extensions/
 - title: Recommendations

@@ -1,7 +1,6 @@
 lsi: false
 source: .
 destination: ./public
-baseurl: /jsonapi.cn
 exclude:
   - Rakefile
   - README.md

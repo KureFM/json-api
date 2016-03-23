@@ -75,7 +75,11 @@
           <h2>A specification for building APIs in JSON</h2>
           <div class="quicklinks">
             {% for link in site.quicklinks %}
-              <a href="{{ site.github.url }}{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+                {% if link.url =~ %r{[a-zA-z]+://[^\s]*} %}
+                    <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+                {% else %}
+                    <a href="{{ site.github.url }}{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+                {% endif %}
             {% endfor %}
           </div>
         </div>

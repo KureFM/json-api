@@ -42,24 +42,24 @@ gems:
 
 navigation:
 - title: JSON API
-  url: {{ site.github.url }}/
+  url: ./
 - title: Specification
-  url: .{{ site.github.url }}/format/
+  url: ./format/
 - title: Extensions
-  url: {{ site.github.url }}/extensions/
+  url: ./extensions/
 - title: Recommendations
-  url: {{ site.github.url }}/recommendations/
+  url: ./recommendations/
 - title: Examples
-  url: {{ site.github.url }}/examples/
+  url: ./examples/
 - title: Implementations
-  url: {{ site.github.url }}/implementations/
+  url: ./implementations/
 - title: FAQ
-  url: {{ site.github.url }}/faq/
+  url: ./faq/
 - title: About
-  url: {{ site.github.url }}/about/
+  url: ./about/
 
 quicklinks:
 - title: View the specification
-  url: {{ site.github.url }}/format/
+  url: ./format/
 - title: Contribute on GitHub
   url: https://github.com/json-api/json-api

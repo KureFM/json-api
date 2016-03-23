@@ -60,7 +60,7 @@
         <ul>
           {% assign url = page.url|remove:'index.html' %}
           {% for link in site.navigation %}
-            <li {% if url == link.url %}class="active"{% endif %}><a href="{{ site.github.url }}/{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+            <li {% if url == link.url %}class="active"{% endif %}><a href="{{ site.github.url }}{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
           {% endfor %}
           <li class="version">
             <a href="{{ site.github.url }}/format/#status" class="pill">v{{ site.latest_version }} <span class="stable">Stable</span></a>
@@ -75,7 +75,7 @@
           <h2>A specification for building APIs in JSON</h2>
           <div class="quicklinks">
             {% for link in site.quicklinks %}
-              <a href="{{ site.github.url }}/{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+              <a href="{{ site.github.url }}{{link.url}}" title="{{link.title}}">{{link.title}}</a>
             {% endfor %}
           </div>
         </div>

@@ -1,5 +1,3 @@
-url: http://jsonapi.org
-
 lsi: false
 source: .
 destination: ./public
@@ -44,24 +42,24 @@ gems:
 
 navigation:
 - title: JSON API
-  url: /
+  url: {{ site.github.url }}/
 - title: Specification
-  url: /format/
+  url: {{ site.github.url }}/format/
 - title: Extensions
-  url: /extensions/
+  url: {{ site.github.url }}/extensions/
 - title: Recommendations
-  url: /recommendations/
+  url: {{ site.github.url }}/recommendations/
 - title: Examples
-  url: /examples/
+  url: {{ site.github.url }}/examples/
 - title: Implementations
-  url: /implementations/
+  url: {{ site.github.url }}/implementations/
 - title: FAQ
-  url: /faq/
+  url: {{ site.github.url }}/faq/
 - title: About
-  url: /about/
+  url: {{ site.github.url }}/about/
 
 quicklinks:
 - title: View the specification
-  url: /format/
+  url: {{ site.github.url }}/format/
 - title: Contribute on GitHub
   url: https://github.com/json-api/json-api

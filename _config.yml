@@ -1,6 +1,7 @@
 lsi: false
 source: .
 destination: ./public
+baseurl: /project-name
 exclude:
   - Rakefile
   - README.md
@@ -42,24 +43,24 @@ gems:
 
 navigation:
 - title: JSON API
-  url: ./
+  url: /
 - title: Specification
-  url: {{ page.url | prepend: site.github.url }}/format/
+  url: /format/
 - title: Extensions
-  url: ./extensions/
+  url: /extensions/
 - title: Recommendations
-  url: ./recommendations/
+  url: /recommendations/
 - title: Examples
-  url: ./examples/
+  url: /examples/
 - title: Implementations
-  url: ./implementations/
+  url: /implementations/
 - title: FAQ
-  url: ./faq/
+  url: /faq/
 - title: About
-  url: ./about/
+  url: /about/
 
 quicklinks:
 - title: View the specification
-  url: ./format/
+  url: /format/
 - title: Contribute on GitHub
   url: https://github.com/json-api/json-api

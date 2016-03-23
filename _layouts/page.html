@@ -75,13 +75,10 @@
           <h2>A specification for building APIs in JSON</h2>
           <div class="quicklinks">
             {% for link in site.quicklinks %}
-                <script>
-                    console.log({{link.url}});
-                </script>
-                {% if link.url =~ %r{[a-zA-z]+://[^\s]*}i %}
-                    <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
-                {% else %}
+                {% if link.redirect %}
                     <a href="{{ site.github.url }}{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+                {% else %}
+                    <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
                 {% endif %}
             {% endfor %}
           </div>

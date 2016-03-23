@@ -61,5 +61,7 @@ navigation:
 quicklinks:
   - title: View the specification
     url: /format/
+    redirect: true
   - title: Contribute on GitHub
     url: https://github.com/json-api/json-api
+    redirect: false

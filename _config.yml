@@ -45,7 +45,7 @@ navigation:
 - title: JSON API
   url: /
 - title: Specification
-  url: /format/
+  url: {{ site.baseurl }}/format/
 - title: Extensions
   url: /extensions/
 - title: Recommendations

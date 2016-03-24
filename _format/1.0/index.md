@@ -428,10 +428,10 @@ A "relationship object" **MUST** contain at least one of the following:
 
 - `links`：[链接对象][links]至少包含下列成员中的一个：
     - `self`：关联自身的链接（“关联链接”）。该链接允许客户端直接操纵关联。
-    例如：通过`author`集合关联来移除一个`author`，会导致`preson`和`author`之间的连接断开，但并不会删除`person`。
-    当获取成功后，链接会返回以相关资源为主数据的[链][resource linkage]。（参见[获取关联](#fetching-relationships)。）
+    例如：通过`author`的关联URL来移除一个`author`，会导致`preson`和`author`之间的连接断开，但并不会删除`person`。
+    当获取成功后，链接会返回以相关资源为主数据的[联动][resource linkage]。（参见[获取关联](#fetching-relationships)。）
     - `related`：[相关资源链接][related resource link]
-- `data`：[资源链][resource linkage]
+- `data`：[资源联动][resource linkage]
 - `meta`： 与关联有关的不规则的元信息构成的[元对象][meta]
 {% comment %}
 * `links`: a [links object][links] containing at least one of the following:
@@ -459,9 +459,9 @@ A relationship object that represents a to-many relationship **MAY** also contai
 > Note: See [fields] and [member names] for more restrictions on this container.
 {% endcomment %}
 
-#### <a href="#document-resource-object-related-resource-links" id="document-resource-object-related-resource-links" class="headerlink"></a> 相对资源链接{% comment %}Related Resource Links{% endcomment %}
+#### <a href="#document-resource-object-related-resource-links" id="document-resource-object-related-resource-links" class="headerlink"></a> 相关资源链接{% comment %}Related Resource Links{% endcomment %}
 
-
+“相关资源链接”提供了访问[关联][relationships]中的[资源对象][resource objects][链接][links]的方法。在访问的时候，相关资源对象会作为响应的主数据返回。
 {% comment %}
 A "related resource link" provides access to [resource objects]
  [linked][links]
@@ -469,34 +469,59 @@ in a [relationship][relationships]. When fetched, the related resource object(s)
 are returned as the response's primary data.
 {% endcomment %}
 
+例如，`article`的'comments'[关联][relationships]可以指定一个链接，当通过`GET`请求该链接时，返回一个评论集合的资源对象。
+{% comment %}
 For example, an `article`'s `comments` [relationship][relationships] could
 specify a [link][links] that returns a collection of comment [resource objects]
 when retrieved through a `GET` request.
+{% endcomment %}
 
+如果存在相关资源链接，就**必须**引用有效的URL，即使关联不与任何目标资源关联。
+此外，一个相关资源链接**不能**因关联的内容的变化而改变。
+{% comment %}
 If present, a related resource link **MUST** reference a valid URL, even if the
 relationship isn't currently associated with any target resources. Additionally,
 a related resource link **MUST NOT** change because its relationship's content
 changes.
+{% endcomment %}
 
-#### <a href="#document-resource-object-linkage" id="document-resource-object-linkage" class="headerlink"></a> Resource Linkage
+#### <a href="#document-resource-object-linkage" id="document-resource-object-linkage" class="headerlink"></a> 资源联动{% comment %}Resource Linkage{% endcomment %}
 
+复合文档[compound document]中的资源联动允许客户端将所有包含的资源对象[resource objects]连在一起，无需通过`GET`访问链接[links]中的任何URL。
+{% comment %}
 Resource linkage in a [compound document] allows a client to link together all
 of the included [resource objects] without having to `GET` any URLs via [links].
+{% endcomment %}
 
+资源联动**必须**是下列中的一种
+{% comment %}
 Resource linkage **MUST** be represented as one of the following:
+{% endcomment %}
 
+* 用`null`表示的空对一关联。
+* 用空数组（`[]`）表示的空对多关联。
+* 用一个[资源标识符对象][resource identifier object]来表示非空对一的关联。
+* 用[资源标识符对象][resource identifier object]数组来表示非空对多的关联。
+{% comment %}
 * `null` for empty to-one relationships.
 * an empty array (`[]`) for empty to-many relationships.
 * a single [resource identifier object] for non-empty to-one relationships.
 * an array of [resource identifier objects][resource identifier object] for non-empty to-many relationships.
+{% endcomment %}
 
+> 说明：该规范不赋予资源标识符对象在多关系联动数组中顺序的意义，虽然实现这一点并不困难。资源标识符对象数组可以表示有序或无序的关系，并且这两种类型可以在响应对象中混合使用。
+{% comment %}
 > Note: The spec does not impart meaning to order of resource identifier
 objects in linkage arrays of to-many relationships, although implementations
 may do that. Arrays of resource identifier objects may represent ordered
 or unordered relationships, and both types can be mixed in one response
 object.
+{% endcomment %}
 
+例如，下面的文章是与`author` 关联在一起的：
+{% comment %}
 For example, the following article is associated with an `author`:
+{% endcomment %}
 
 ```json
 // ...
@@ -522,17 +547,26 @@ For example, the following article is associated with an `author`:
 // ...
 ```
 
+`author`关联包含了关联本身的一个链接（允许客户端直接更改相关的作者），以及一个可以直接获取资源对象和联动信息的相关资源链接。
+{% comment %}
 The `author` relationship includes a link for the relationship itself (which
 allows the client to change the related author directly), a related resource
 link to fetch the resource objects, and linkage information.
+{% endcomment %}
 
-#### <a href="#document-resource-object-links" id="document-resource-object-links" class="headerlink"></a> Resource Links
+#### <a href="#document-resource-object-links" id="document-resource-object-links" class="headerlink"></a> 资源链接{% comment %}Resource Links{% endcomment %}
 
+[资源对象][resource objects]中的可选`links`成员含有与[链接][links]相关的资源。 
+{% comment %}
 The optional `links` member within each [resource object][resource objects] contains [links]
 related to the resource.
+{% endcomment %}
 
+链接对象**可以**包含一个`self`链接[links]，该链接标识了该资源对象所表示的资源。
+{% comment %}
 If present, this links object **MAY** contain a `self` [link][links] that
 identifies the resource represented by the resource object.
+{% endcomment %}
 
 ```json
 // ...
@@ -549,43 +583,72 @@ identifies the resource represented by the resource object.
 // ...
 ```
 
+服务器**必须**响应指定URL的`GET`请求，并返回以资源为主数据的响应。
+{% comment %}
 A server **MUST** respond to a `GET` request to the specified URL with a
 response that includes the resource as the primary data.
+{% endcomment %}
 
-### <a href="#document-resource-identifier-objects" id="document-resource-identifier-objects" class="headerlink"></a> Resource Identifier Objects
+### <a href="#document-resource-identifier-objects" id="document-resource-identifier-objects" class="headerlink"></a> 资源标识对象{% comment %}Resource Identifier Objects{% endcomment %}
 
+“资源标识对象”用于标识一个唯一的资源。
+{% comment %}
 A "resource identifier object" is an object that identifies an individual
 resource.
+{% endcomment %}
 
+“资源标识对象”**必须**包含`type`和`id`成员。
+{% comment %}
 A "resource identifier object" **MUST** contain `type` and `id` members.
+{% endcomment %}
 
+“资源标识对象”也**可以**包含`mate`成员，它的值是一个包含非标准元信息的[元][meta]对象。
+{% comment %}
 A "resource identifier object" **MAY** also include a `meta` member, whose value is a [meta] object that
 contains non-standard meta-information.
+{% endcomment %}
 
-### <a href="#document-compound-documents" id="document-compound-documents" class="headerlink"></a> Compound Documents
+### <a href="#document-compound-documents" id="document-compound-documents" class="headerlink"></a> 复合文档{% comment %}Compound Documents{% endcomment %}
 
+为了减少HTTP的请求数量，服务器**可以**将相关资源以及所需的主要资源放在同一个响应中返回给客户端。这种响应方式称为“复合文档”。
+{% comment %}
 To reduce the number of HTTP requests, servers **MAY** allow responses that
 include related resources along with the requested primary resources. Such
 responses are called "compound documents".
+{% endcomment %}
 
+在复合文档中，所有的资源**必须**被表示成一个[资源对象][resource objects]数组，并放在顶层`included`成员中。
+{% comment %}
 In a compound document, all included resources **MUST** be represented as an
 array of [resource objects] in a top-level `included` member.
+{% endcomment %}
 
+符合文档需要“全联动”，这意味着每个在文档中的资源**必须**至少被[资源标识对象][resource identifier object]标识一次。这些资源标识符要么是主数据，要么就是包含资源联动的主资源或者包含资源。
+{% comment %}
 Compound documents require "full linkage", meaning that every included
 resource **MUST** be identified by at least one [resource identifier object]
 in the same document. These resource identifier objects could either be
 primary data or represent resource linkage contained within primary or
 included resources.
+{% endcomment %}
 
+全联动要求唯一可以例外的是，原本包含联动的关系字段通过被[稀疏字段集](#fetching-sparse-fieldsets)排除在外。
+{% comment %}
 The only exception to the full linkage requirement is when relationship fields
 that would otherwise contain linkage data are excluded via [sparse fieldsets](#fetching-sparse-fieldsets).
+{% endcomment %}
 
+> 说明：全联动确保被包含的资源是与主数据（可能是[资源对象][resource objects]或者[资源标识对象][resource identifier object]）或者彼此相关的。
+{% comment %}
 > Note: Full linkage ensures that included resources are related to either
 the primary data (which could be [resource objects] or [resource identifier
 objects][resource identifier object]) or to each other.
+{% endcomment %}
 
+多包含关系的完整示例文档：
+{% comment %}
 A complete example document with multiple included relationships:
-
+{% endcomment %}
 ```json
 {
   "data": [{
@@ -660,8 +723,11 @@ A complete example document with multiple included relationships:
 }
 ```
 
+[复合文档][compound document]的每个`type`和`id`键值对**不能**表示超过一个[资源对象][resource objects]
+{% comment %}
 A [compound document] **MUST NOT** include more than one [resource object][resource objects] for
 each `type` and `id` pair.
+{% endcomment %}
 
 > Note: In a single document, you can think of the `type` and `id` as a
 composite key that uniquely references [resource objects] in another part of

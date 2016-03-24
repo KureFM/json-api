@@ -102,7 +102,7 @@ and versioning.
 
 ## <a href="#document-structure" id="document-structure" class="headerlink"></a> 文档结构{% comment %}Document Structure{% endcomment %}
 
-这一章节描述JSON API文档结构，该结构通过媒体类型([application/vnd.api+json](http://www.iana.org/assignments/media-types/application/vnd.api+json)) 标识。JSON API文档使用JavaScript Object Notation[[RFC4627](http://tools.ietf.org/html/rfc7159)]定义。
+这一章节描述JSON API文档结构，该结构通过媒体类型([application/vnd.api+json](http://www.iana.org/assignments/media-types/application/vnd.api+json)) 标识。JSON API文档使用JavaScript Object Notation[[RFC7159](http://tools.ietf.org/html/rfc7159)]定义。
 {% comment %}
 This section describes the structure of a JSON API document, which is identified
 by the media type [`application/vnd.api+json`]
@@ -131,15 +131,15 @@ ignore members not recognized by this specification.
 changes.
 {% endcomment %}
 
-### <a href="#document-top-level" id="document-top-level" class="headerlink"></a> 顶级{% comment %}Top Level{% endcomment %}
+### <a href="#document-top-level" id="document-top-level" class="headerlink"></a> 顶层{% comment %}Top Level{% endcomment %}
 
-每个JSON API请求或响应数据的根**必须**有一个JSON对象。这个对象定义文档的“顶级”。
+每个JSON API请求或响应数据的根**必须**有一个JSON对象。这个对象定义文档的“顶层”。
 {% comment %}
 A JSON object **MUST** be at the root of every JSON API request and response
 containing data. This object defines a document's "top level".
 {% endcomment %}
 
-文档**必须**至少包含一个下列的顶级成员：
+文档**必须**至少包含一个下列的顶层成员：
 {% comment %}
 A document **MUST** contain at least one of the following top-level members:
 {% endcomment %}
@@ -153,13 +153,13 @@ A document **MUST** contain at least one of the following top-level members:
 * `meta`: a [meta object][meta] that contains non-standard
   meta-information.
 {% endcomment %}
-  
+
 成员`data`和`errors`**不能**同时存在一个文档中。
 {% comment %}
 The members `data` and `errors` **MUST NOT** coexist in the same document.
 {% endcomment %}
 
-文档**可以**包含下列几个顶级成员：
+文档**可以**包含下列几个顶层成员：
 {% comment %}
 A document **MAY** contain any of these top-level members:
 {% endcomment %}
@@ -174,19 +174,19 @@ A document **MAY** contain any of these top-level members:
   data and/or each other ("included resources").
 {% endcomment %}
 
-如果文档没有包含顶级`data`键（成员），那么`include`成员则**不能**出现在文档中。
+如果文档没有包含顶层`data`键（成员），那么`include`成员则**不能**出现在文档中。
 {% comment %}
 If a document does not contain a top-level `data` key, the `included` member
 **MUST NOT** be present either.
 {% endcomment %}
 
-顶级[链接对象][links]**可以**包含下列成员：
+顶层[链接对象][links]**可以**包含下列成员：
 {% comment %}
 The top-level [links object][links] **MAY** contain the following members:
 {% endcomment %}
 
 - `self`：当前响应文档的[链接][links]
-- `related`：当主数据可以表示成一种资源关系，使用[相关资源链接][related resource link]来描述它
+- `related`：当主数据可以表示成一种资源关联，使用[相关资源链接][related resource link]来描述它
 - 主数据的[分页][pagination]链接。
 {% comment %}
 * `self`: the [link][links] that generated the current response document.
@@ -251,7 +251,7 @@ references the same resource:
 }
 ```
 
-资源的逻辑集合**必须**表示为一个数组，即使它只包含一项或为空。
+资源的逻辑集合**必须**表示为一个数组，即使它有一项或为空。
 {% comment %}
 A logical collection of resources **MUST** be represented as an array, even if
 it only contains one item or is empty.
@@ -264,7 +264,7 @@ it only contains one item or is empty.
 "Resource objects" appear in a JSON API document to represent resources.
 {% endcomment %}
 
-资源对象**必须**至少包含以下顶级成员：
+资源对象**必须**至少包含以下顶层成员：
 {% comment %}
 A resource object **MUST** contain at least the following top-level members:
 {% endcomment %}
@@ -278,15 +278,15 @@ Exception: The `id` member is not required when the resource object originates a
 the client and represents a new resource to be created on the server.
 {% endcomment %}
 
-此外，*资源对象***可以**包含下列任意的顶级成员：
+此外，*资源对象***可以**包含下列任意的顶层成员：
 {% comment %}
 In addition, a resource object **MAY** contain any of these top-level members:
 {% endcomment %}
 
 - `attributes`：[属性对象][attributes]表示该资源的一些数据
-- `relationships`：[关系对象][relationships]描述该资源与其他JSON API资源的关系
+- `relationships`：[关联对象][relationships]描述该资源与其他JSON API资源的关联
 - `links`：[连接对象][links]包含与该资源有关的链接
-- `meta`：[元对象][meta]包含与资源有关，但不能表示为属性或关系的非标准元信息
+- `meta`：[元对象][meta]包含与资源有关，但不能表示为属性或关联的非标准元信息
 {% comment %}
 * `attributes`: an [attributes object][attributes] representing some of the resource's data.
 * `relationships`: a [relationships object][relationships] describing relationships between
@@ -337,64 +337,103 @@ identify a single, unique resource. (The set of URIs controlled by a server,
 or multiple servers acting as one, constitute an API.)
 {% endcomment %}
 
-`type`成员用来描述拥有共同属性和关系的[资源对象][resource objects]。
+`type`成员用来描述拥有共同属性和关联的[资源对象][resource objects]。
 {% comment %}
 The `type` member is used to describe [resource objects] that share common
 attributes and relationships.
 {% endcomment %}
 
-`type`成员的值**必须**始终以同样约束作为[成员名称][member names]。
+`type`成员的值**必须**遵循与[成员名称][member names]一样的原则。
 {% comment %}
 The values of `type` members **MUST** adhere to the same constraints as
 [member names].
 {% endcomment %}
 
+> 说明：该规范无法预知所有的情况，所以`type`的值既可以是单数，也可以是复数。但应该始终使用同样的值。
 {% comment %}
 > Note: This spec is agnostic about inflection rules, so the value of `type`
 can be either plural or singular. However, the same value should be used
 consistently throughout an implementation.
 {% endcomment %}
 
-#### <a href="#document-resource-object-fields" id="document-resource-object-fields" class="headerlink"></a> Fields
+#### <a href="#document-resource-object-fields" id="document-resource-object-fields" class="headerlink"></a> 字段{% comment %}Fields{%  endcomment %}
 
+资源对象的属性[attributes]和关联[relationships]统称为字段[fields]
+{% comment %}
 A resource object's [attributes] and its [relationships] are collectively called
 its "[fields]".
+{% endcomment %}
 
+资源对象[resource objects]的所有字段**必须**共用一个命名空间，同时`type`和`id`也处在该命名空间中。换句话说，资源对象不能有相同名称的属性或关联，也不能将属性或者关联命名为`type`或者`id`。
+{% comment %}
 Fields for a [resource object][resource objects] **MUST** share a common namespace with each
 other and with `type` and `id`. In other words, a resource can not have an
 attribute and relationship with the same name, nor can it have an attribute
 or relationship named `type` or `id`.
+{% endcomment %}
 
-#### <a href="#document-resource-object-attributes" id="document-resource-object-attributes" class="headerlink"></a> Attributes
+#### <a href="#document-resource-object-attributes" id="document-resource-object-attributes" class="headerlink"></a> 属性{% comment %}Attributes{% endcomment %}
 
+属性的值**必须**是对象（属性对象）。属性对象（属性）的成员表示它所定义的资源对象[resource objects]的信息。
+{% comment %}
 The value of the `attributes` key **MUST** be an object (an "attributes
 object"). Members of the attributes object ("attributes") represent information
 about the [resource object][resource objects] in which it's defined.
+{% endcomment %}
 
+属性可以包含任何有效的JSON值。
+{% comment %}
 Attributes may contain any valid JSON value.
+{% endcomment %}
 
+可以将JSON对象或者数组等复合数据结构作为属性的值。但是构成属性的任何对象都**不能**含有`relationships`和`links`成员，因为这些成员被留作将来使用。
+{% comment %}
 Complex data structures involving JSON objects and arrays are allowed as
 attribute values. However, any object that constitutes or is contained in an
 attribute **MUST NOT** contain a `relationships` or `links` member, as those
 members are reserved by this specification for future use.
+{% endcomment %}
 
+尽管外键（例如：`author_id`）通常与其他信息存储在一起，但这些键**不应该**出现在属性中。
+{% comment %}
 Although has-one foreign keys (e.g. `author_id`) are often stored internally
 alongside other information to be represented in a resource object, these keys
 **SHOULD NOT** appear as attributes.
+{% endcomment %}
 
+> 说明：请参见[字段][fields]和[成员命名][member names]来了解更多的约束条件。
+{% comment %}
 > Note: See [fields] and [member names] for more restrictions on this container.
+{% endcomment %}
 
-#### <a href="#document-resource-object-relationships" id="document-resource-object-relationships" class="headerlink"></a> Relationships
+#### <a href="#document-resource-object-relationships" id="document-resource-object-relationships" class="headerlink"></a> 关联{% comment %}Relationships{% endcomment %}
 
+`relationships`的值必须是一个对象（关联对象）。关联对象（"关联"）的成员表示从当前[资源对象][resource objects]到它所定义的那个资源对象的引用。
+{% comment %}
 The value of the `relationships` key **MUST** be an object (a "relationships
 object"). Members of the relationships object ("relationships") represent
 references from the [resource object][resource objects] in which it's defined to other resource
 objects.
+{% endcomment %}
 
+关联可以是一对一也可以是一对多
+{% comment %}
 Relationships may be to-one or to-many.
+{% endcomment %}
 
+一个关联对象**必须**至少包含下列成员中的一个：
+{% comment %}
 A "relationship object" **MUST** contain at least one of the following:
+{% endcomment %}
 
+- `links`：[链接对象][links]至少包含下列成员中的一个：
+    - `self`：关联自身的链接（“关联链接”）。该链接允许客户端直接操纵关联。
+    例如：通过`author`集合关联来移除一个`author`，会导致`preson`和`author`之间的连接断开，但并不会删除`person`。
+    当获取成功后，链接会返回以相关资源为主数据的[链][resource linkage]。（参见[获取关联](#fetching-relationships)。）
+    - `related`：[相关资源链接][related resource link]
+- `data`：[资源链][resource linkage]
+- `meta`： 与关联有关的不规则的元信息构成的[元对象][meta]
+{% comment %}
 * `links`: a [links object][links] containing at least one of the following:
   * `self`: a link for the relationship itself (a "relationship link"). This
     link allows the client to directly manipulate the relationship. For example,
@@ -407,17 +446,28 @@ A "relationship object" **MUST** contain at least one of the following:
 * `data`: [resource linkage]
 * `meta`: a [meta object][meta] that contains non-standard meta-information about the
   relationship.
+{% endcomment %}
 
+表示一对多关联的关联对象，还**可以**像下面描述的那样，在`links`成员里加上分页[pagination]。
+{% comment %}
 A relationship object that represents a to-many relationship **MAY** also contain
 [pagination] links under the `links` member, as described below.
+{% endcomment %}
 
+> 说明：请参见[字段][fields]和[成员命名][member names]来了解更多的约束条件。
+{% comment %}
 > Note: See [fields] and [member names] for more restrictions on this container.
+{% endcomment %}
 
-#### <a href="#document-resource-object-related-resource-links" id="document-resource-object-related-resource-links" class="headerlink"></a> Related Resource Links
+#### <a href="#document-resource-object-related-resource-links" id="document-resource-object-related-resource-links" class="headerlink"></a> 相对资源链接{% comment %}Related Resource Links{% endcomment %}
 
-A "related resource link" provides access to [resource objects] [linked][links]
+
+{% comment %}
+A "related resource link" provides access to [resource objects]
+ [linked][links]
 in a [relationship][relationships]. When fetched, the related resource object(s)
 are returned as the response's primary data.
+{% endcomment %}
 
 For example, an `article`'s `comments` [relationship][relationships] could
 specify a [link][links] that returns a collection of comment [resource objects]

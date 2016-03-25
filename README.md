@@ -9,4 +9,4 @@
 如果你想参与到翻译中，可以fork我的项目来修改。
 
 ## 附
-[原项目README]('./REAMDE.org.md')
+[原项目README](./README.org.md)

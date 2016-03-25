@@ -728,24 +728,37 @@ A complete example document with multiple included relationships:
 A [compound document] **MUST NOT** include more than one [resource object][resource objects] for
 each `type` and `id` pair.
 {% endcomment %}
-
+> 注：在单个文档中，你会想到将将`type`和`id`作为组合键来唯一地索引另一个文档中的[资源对象][resource objects]。
+{% comment %}
 > Note: In a single document, you can think of the `type` and `id` as a
 composite key that uniquely references [resource objects] in another part of
 the document.
+{% endcomment %}
 
+> 注：这种方法可以确保每个响应都能返回一个规范的[资源对象][resource objects]，即便是在同样资源被多次引用的情况下。
+{% comment %}
 > Note: This approach ensures that a single canonical [resource object][resource objects] is
 returned with each response, even when the same resource is referenced
 multiple times.
+{% endcomment %}
 
-### <a href="#document-meta" id="document-meta" class="headerlink"></a> Meta Information
-
+### <a href="#document-meta" id="document-meta" class="headerlink"></a> 元信息{% comment %}Meta Information{% endcomment %}
+当需要的时候，`meta`成员可以用于存放多个非标准的元信息。每个`meta`成员的值必须是一个对象（“元对象”）。
+{% comment %}
 Where specified, a `meta` member can be used to include non-standard
 meta-information. The value of each `meta` member **MUST** be an object (a
 "meta object").
+{% endcomment %}
 
+任何成员都可以放在`meta`对象中。
+{% comment %}
 Any members **MAY** be specified within `meta` objects.
+{% endcomment %}
 
+例如：
+{% comment %}
 For example:
+{% endcomment %}
 
 ```json
 {
@@ -764,19 +777,30 @@ For example:
 }
 ```
 
-### <a href="#document-links" id="document-links" class="headerlink"></a> Links
-
+### <a href="#document-links" id="document-links" class="headerlink"></a> 链接{% comment %}Links{% endcomment %}
+当需要的时候，`links`成员可以用来表示链接。`links`成员的值必须是一个对象（“链接对象”）。
+{% comment %}
 Where specified, a `links` member can be used to represent links. The value
 of each `links` member **MUST** be an object (a "links object").
+{% endcomment %}
 
+链接对象的每个成员都是一个“链接”，链接必须是下面的任一种表示方式：
+{% comment %}
 Each member of a links object is a "link". A link **MUST** be represented as
 either:
+{% endcomment %}
 
+- 一个包含链接URL的字符串
+- 一个包含下列成员的对象（链接对象）：
+  - `href`：一个包含链接URL的字符串。
+  - `meta`：一个包含关于链接的非标准元信息的元对象。
+{% comment %}
 * a string containing the link's URL.
 * an object ("link object") which can contain the following members:
   * `href`: a string containing the link's URL.
   * `meta`: a meta object containing non-standard meta-information about the
     link.
+{% endcomment %}
 
 The following `self` link is simply a URL:
 
@@ -2007,14 +2031,17 @@ parameter from this specification, it **MUST** return `400 Bad Request`.
 > Note: This is to preserve the ability of JSON API to make additive additions
 to standard query parameters without conflicting with existing implementations.
 
-## <a href="#errors" id="errors" class="headerlink"></a> Errors
+## <a href="#errors" id="errors" class="headerlink"></a> 错误{% comment %}Errors{% endcomment %}
 
-### <a href="#errors-processing" id="errors-processing" class="headerlink"></a> Processing Errors
-
+### <a href="#errors-processing" id="errors-processing" class="headerlink"></a> 处理错误{% comment %}Processing Errors{% endcomment %}
+服务器**可以**选择在遇到问题时尽快停止处理进程，也**可以**选择继续处理并遇到更多的问题。
+例如，一台服务器可能会处理多个属性，然后会将多个验证错误放在同一个响应中返回。
+{% comment %}
 A server **MAY** choose to stop processing as soon as a problem is encountered,
 or it **MAY** continue processing and encounter multiple problems. For instance,
 a server might process multiple attributes and then return multiple validation
 problems in a single response.
+{% endcomment %}
 
 When a server encounters multiple problems for a single request, the most
 generally applicable HTTP error code **SHOULD** be used in the response. For

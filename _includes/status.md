@@ -18,7 +18,7 @@
 {% endcomment %}
 
 {% if is_latest_version_page %}
-这个页面是JSON API最新的发行版本，当前版本是{{ site.latest_version }}。新版本的JSON API使用了*不移除，只添加*策略，**永远是向后兼容的**。可在[论坛](http://discuss.jsonapi.org/)提出建议。
+这个页面是JSON API最新的发行版本，当前版本是{{ site.latest_version }}。新版本的JSON API使用*不移除，只添加*策略，**永远是向后兼容的**。可在[论坛](http://discuss.jsonapi.org/)提出建议。
 {% comment %}
   This page represents the latest published version of JSON API, which is
   currently version {{ site.latest_version }}. New versions of JSON API **will

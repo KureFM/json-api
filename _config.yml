@@ -43,19 +43,19 @@ gems:
 navigation:
   - title: JSON API
     url: /
-  - title: Specification
+  - title: 规范
     url: /format/
-  - title: Extensions
+  - title: 扩展
     url: /extensions/
-  - title: Recommendations
+  - title: 建议
     url: /recommendations/
-  - title: Examples
+  - title: 示例
     url: /examples/
-  - title: Implementations
+  - title: 实现
     url: /implementations/
   - title: FAQ
     url: /faq/
-  - title: About
+  - title: 关于
     url: /about/
 
 quicklinks:

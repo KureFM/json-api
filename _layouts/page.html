@@ -63,7 +63,7 @@
             <li {% if url == link.url %}class="active"{% endif %}><a href="{{ site.github.url }}{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
           {% endfor %}
           <li class="version">
-            <a href="{{ site.github.url }}/format/#status" class="pill">v{{ site.latest_version }} <span class="stable">Stable</span></a>
+            <a href="{{ site.github.url }}/format/#status" class="pill">v{{ site.latest_version }} <span class="stable">稳定版</span></a>
           </li>
         </ul>
       </div>
@@ -99,15 +99,15 @@
                   <option value="{{ site.github.url }}/format/"
                     {% if page.is_latest_version %}selected{% endif %}
                   >
-                    Latest Version (v{{ site.latest_version }})
+                    最新的版本 (v{{ site.latest_version }})
                   </option>
                   <option
                     value="{{ site.github.url }}/format/upcoming/"
                     {% if page.is_upcoming_version %}selected{% endif %}
                   >
-                    Upcoming Version (v{{ site.latest_version|plus:0.1 }})
+                    即将到来的版本 (v{{ site.latest_version|plus:0.1 }})
                   </option>
-                  <optgroup label="Old Versions/Permalinks">
+                  <optgroup label="旧版本/永久链接">
                     {% for spec_draft in site.format|sort:'version' %}
                       {% if spec_draft.version and spec_draft.path contains 'index' %}
                         <option value="{{ site.github.url }}/format/{{spec_draft.version}}"

@@ -16,7 +16,7 @@
 {% assign is_upcoming_version_page = include.is_upcoming_version %}
 
 {% if is_latest_version_page %}
-  Latest Specification (v{{ site.latest_version }})
+  最新的规范 (v{{ site.latest_version }})
 
 {% elsif is_upcoming_version_page %}
   Draft for Next Specification Release

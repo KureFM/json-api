@@ -7,7 +7,7 @@
 {% assign is_latest_version_page = include.is_latest_version %}
 {% assign is_upcoming_version_page = include.is_upcoming_version %}
 
-## <a href="#status" id="status" class="headerlink"></a> Status
+## <a href="#status" id="status" class="headerlink"></a> 状态{% comment %}Status{% endcomment %}
 
 {% comment %}
   The first paragraph in each case, below, aims to explain what content
@@ -18,11 +18,13 @@
 {% endcomment %}
 
 {% if is_latest_version_page %}
+这个页面是JSON API最新的发行版本，当前版本是{{ site.latest_version }}。新版本的JSON API使用了*不移除，只添加*策略，**永远是向后兼容的**。可在[论坛](http://discuss.jsonapi.org/)提出建议。
+{% comment %}
   This page represents the latest published version of JSON API, which is
   currently version {{ site.latest_version }}. New versions of JSON API **will
   always be backwards compatible** using a _never remove, only add_ strategy.
   Additions can be proposed in our [discussion forum](http://discuss.jsonapi.org/).
-
+{% endcomment %}
 {% elsif is_upcoming_version_page %}
   This page represents the **working draft** for the next version of JSON API,
   which is currently expected to be {{ site.latest_version|plus:0.1 }}.
@@ -54,10 +56,12 @@
 {% endcomment %}
 
 {% if is_latest_version_page or (version and version <= site.latest_version) %}
+如果你发现了规范中的文本错误，或者你想参与到其中，请在[GitHub repository](https://github.com/json-api/json-api)提出公开的`issue`或者`pull request`来让我们知道。
+{% comment %}
   If you catch an error in the specification&rsquo;s text, or if you write an
   implementation, please let us know by opening an issue or pull request at our
   [GitHub repository](https://github.com/json-api/json-api).
-
+{% endcomment %}
 {% else %}
   If you have concerns about the changes in this draft, catch an error in the
   specification&rsquo;s text, or write an implementation, please let us know by

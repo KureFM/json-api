@@ -487,7 +487,7 @@ changes.
 
 #### <a href="#document-resource-object-linkage" id="document-resource-object-linkage" class="headerlink"></a> 资源联动{% comment %}Resource Linkage{% endcomment %}
 
-复合文档[compound document]中的资源联动允许客户端将所有包含的资源对象[resource objects]连在一起，无需通过`GET`访问链接[links]中的任何URL。
+[复合文档][compound document]中的资源联动允许客户端将所有包含的[资源对象][resource objects]连在一起，无需通过`GET`访问链接[links]中的任何URL。
 {% comment %}
 Resource linkage in a [compound document] allows a client to link together all
 of the included [resource objects] without having to `GET` any URLs via [links].

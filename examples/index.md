@@ -207,7 +207,7 @@ you like (`"total"`, `"count"`, etc.) or not use it at all.
 > 注：以上URI示例表明未编码的`[`和`]`字符仅仅是为了可读性。实际应用中，这些字符必须是基本规范中注明的%编码。
 > 注：在`"meta"`中加入如`"total-pages"`这样的属性能够方便的向客户端表明在一个集合中的页面总数（而不是`"last"`链接，它仅仅给出了最后一页的URI）。然而，所有的`"meta"`值都是特定于实现的，所以你怎么称呼这个成员随你便（`"total"`、`"count"`等）或者根本不用它。
 
-## <a href="#error-objects" id="error-objects" class="headerlink"></a> {% Error 对象
+## <a href="#error-objects" id="error-objects" class="headerlink"></a> {% comment %}Error Objects{% endcomment %}Error 对象
 
 {% comment %}
 Examples of how [error objects](http://jsonapi.org/format/#error-objects) work.

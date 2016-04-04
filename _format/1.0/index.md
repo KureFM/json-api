@@ -1003,7 +1003,7 @@ The following characters **MUST NOT** be used in member names:
 Data, including resources and relationships, can be fetched by sending a
 `GET` request to an endpoint.
 {%endcomment%}
-数据，包括资源和关联，可以通过发送GET请求岛一个端点获取。
+数据，包括资源和关联，可以通过发送GET请求到一个端点获取。
 
 {%comment%}
 Responses can be further refined with the optional features described below.
@@ -1253,7 +1253,7 @@ Accept: application/vnd.api+json
 A server **MUST** respond to a successful request to fetch a relationship
 with a `200 OK` response.
 {%endcomment%}
-服务器端b**必须**回应以一个`200 OK`响应一个来获取关联的成功请求。
+服务器端**必须**回应以一个`200 OK`响应一个来获取关联的成功请求。
 
 {%comment%}
 The primary data in the response document **MUST** match the appropriate
@@ -2173,7 +2173,7 @@ attribute or a computed `sha`), it **MUST** return a `200 OK` response. The
 response document **MUST** include a representation of the updated
 resource(s) as if a `GET` request was made to the request URL.
 {%endcomment%}
-如果服务器接受了更新，但也（除按请求所指定的方式）对资源做了修改（例如，更新`updated-at`属性或计算sha值),它**必须**返回一个`200 OK`响应。响应文档**必须**包括已更新资源实例，就好像向请求的URL发出了`GET`请求。
+如果服务器接受了更新，但也（除按请求所指定的方式）对资源做了修改（例如，更新`updated-at`属性或计算`sha`值),它**必须**返回一个`200 OK`响应。响应文档**必须**包括已更新资源实例，就好像向请求的URL发出了`GET`请求。
 
 {%comment%}
 A server **MUST** return a `200 OK` status code if an update is successful,

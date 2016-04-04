@@ -53,7 +53,7 @@ There are five primary editors of this specification:
 * 在一个请求中嵌入/创建多个相关的资源
 * 支持扩展
 
-## <a href="#history" id="history" class="headerlink"></a> {% comment %}History{% endcomment %}发展历史
+## <a href="#history" id="history" class="headerlink"></a> {% comment %}History{% endcomment %}历史
 
 {% comment %}
 JSON API was originally drafted by [Yehuda Katz](http://twitter.com/wycats)
@@ -102,22 +102,26 @@ Rails, Django and Node developers.
 {% endcomment %}
 记录的创建，更新，和删除是Ember-Data库的隐式定义，类似于已被Rails 、Django和Node开发者所广泛使用的约定。
 
+
 {% comment %}
 The goals of the media type are to balance:
+{% endcomment %}
+媒体类型的目标是为了平衡：
 
+{% comment %}
 * A generic media type that can work across a broad set of use cases,
   including the generally used relationship types
 * Similarity to existing server-side framework practices (and human
   readability for debugging)
 * Ease of implementation on the server side
 * Ease of implementation on the client side
-
-This specification reached a stable version 1.0 on May 29, 2015.
 {% endcomment %}
-媒体类型的目标是为了平衡：
 * 通过广泛用例集合工作的通用媒体类型，包括通常使用的关联类型。
 * 类似于现有服务端框架实例（以及调试可读性）
 * 易于服务端的实现
 * 易于客户端的实现
 
+{% comment %}
+This specification reached a stable version 1.0 on May 29, 2015.
+{% endcomment %}
 此规范于2015年5月29日发展到了稳定的1.0版本。

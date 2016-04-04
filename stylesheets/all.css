@@ -158,7 +158,9 @@ p, table {
 
 th {
   text-align: left;
-  padding-right: 1em; }
+  padding-right: 1em;
+  border: 1px solid;
+}
 
 a {
   color: #5a5a5a; }

@@ -12,5 +12,8 @@
 - 最近翻译内容的更新由[ColinsTong](https://github.com/ColinsTong)提供，译文由他本人和另外两个朋友提供，再此表示感谢。
 - 最近更新的内容尚未经过校对，可能存在表达不清或者错别字，若发现由文本错误可直接在[Issues](https://github.com/KureFM/jsonapi.cn/issues)中提出。
 
+## 更新日志
+- 2016-04-04 15:23:06，合并部分翻译，翻译内容待校对。
+
 ## 附
 [原项目README](./README.org.md)

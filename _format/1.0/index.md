@@ -848,7 +848,7 @@ contain a `version` member whose value is a string indicating the highest JSON
 API version supported. This object **MAY** also contain a `meta` member, whose
 value is a [meta] object that contains non-standard meta-information.
 {%endcomment%}
-JSON API文档 **可以** 包含其实现在一个顶层`jsonapi`成员下的信息。`Jsonapi`成员的值 **必须** 以一个对象（jsonapi对象）的形式出现。Jsonapi对象 **可以** 包含一个`version`对象，它的值是一个表明支持最高高版本JSON API的字符串。此对象也 **可以** 包含一个`meta`成员，它的值是一个包含非标准元信息的[meta]对象。
+JSON API文档**可以**包含其实现在一个顶层`jsonapi`成员下的信息。`Jsonapi`成员的值**必须**以一个对象（jsonapi对象）的形式出现。Jsonapi对象**可以**包含一个`version`对象，它的值是一个表明支持最高高版本JSON API的字符串。此对象也**可以**包含一个`meta`成员，它的值是一个包含非标准元信息的[meta]对象。
 
 ```json
 {
@@ -877,7 +877,7 @@ version string primarily indicates which new features a server may support.
 All member names used in a JSON API document **MUST** be treated as case sensitive
 by clients and servers, and they **MUST** meet all of the following conditions:
 {%endcomment%}
-一个JSON API文档中的所有成员名命名 **必须** 视客户端和服务器端对大小写敏感，且 **必须** 符合以下条件：
+一个JSON API文档中的所有成员名命名**必须**视客户端和服务器端对大小写敏感，且**必须**符合以下条件：
 
 {%comment%}
 - Member names **MUST** contain at least one character.
@@ -886,15 +886,15 @@ by clients and servers, and they **MUST** meet all of the following conditions:
   as defined below.
 {%endcomment%}
 
-- 成员名 **必须** 至少包含一个字符。
-- 成员名 **必须** 只能包含以下列出的字符：
-- 成员名 **必须** 以如下定义的一个全局允许的字符起始和结束。
+- 成员名**必须**至少包含一个字符。
+- 成员名**必须**只能包含以下列出的字符：
+- 成员名**必须**以如下定义的一个全局允许的字符起始和结束。
 
 {%comment%}
 To enable an easy mapping of member names to URLs, it is **RECOMMENDED** that
 member names use only non-reserved, URL safe characters specified in [RFC 3986](http://tools.ietf.org/html/rfc3986#page-13).
 {%endcomment%}
-为了使一个简单的成员名到URL的映射可用，成员名 **应该** 只用非保留字符，URL安全字符指定在[RFC 3386](http://tools.ietf.org/html/rfc3986#page-13)文档中。
+为了使一个简单的成员名到URL的映射可用，成员名**应该**只用非保留字符，URL安全字符指定在[RFC 3386](http://tools.ietf.org/html/rfc3986#page-13)文档中。
 
 #### <a href="#document-member-names-allowed-characters" id="document-member-names-allowed-characters" class="headerlink"></a> {%comment%}Allowed Characters{%endcomment%}允许使用的字符
 
@@ -1204,19 +1204,19 @@ fetch a single resource that does not exist, except when the request warrants a
 {%comment%}
 A server **MAY** respond with other HTTP status codes.
 {%endcomment%}
-服务器 **可以** 以其他HTTP状态码响应。
+服务器**可以**以其他HTTP状态码响应。
 
 {%comment%}
 A server **MAY** include [error details] with error responses.
 {%endcomment%}
-服务器 **可以** 响应包含错误细节的错误。
+服务器**可以**响应包含错误细节的错误。
 
 {%comment%}
 A server **MUST** prepare responses, and a client **MUST** interpret
 responses, in accordance with
 [`HTTP semantics`](http://tools.ietf.org/html/rfc7231).
 {%endcomment%}
-服务器 **必须** 准备响应，且客户端必须根据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
+服务器**必须**准备响应，且客户端必须根据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
 
 ### <a href="#fetching-relationships" id="fetching-relationships" class="headerlink"></a> {%comment%}Fetching Relationships{%endcomment%}获取关联
 
@@ -1224,7 +1224,7 @@ responses, in accordance with
 A server **MUST** support fetching relationship data for every relationship URL
 provided as a `self` link as part of a relationship's `links` object.
 {%endcomment%}
-服务器 **必须** 支持获取关联数据，包含`self`链接作为一个关联的`links`对象的一部分。
+服务器**必须**支持获取关联数据，包含`self`链接作为一个关联的`links`对象的一部分。
 
 {%comment%}
 For example, the following request fetches data about an article's comments:
@@ -1253,20 +1253,20 @@ Accept: application/vnd.api+json
 A server **MUST** respond to a successful request to fetch a relationship
 with a `200 OK` response.
 {%endcomment%}
-服务器端b **必须** 回应以一个`200 OK`响应一个来获取关联的成功请求。
+服务器端b**必须**回应以一个`200 OK`响应一个来获取关联的成功请求。
 
 {%comment%}
 The primary data in the response document **MUST** match the appropriate
 value for [resource linkage], as described above for
 [relationship objects][relationships].
 {%endcomment%}
-响应文档中的主要数据 **必须** 符合资源链接的合理值，对于[关联对象][relationships]的描述见上。
+响应文档中的主要数据**必须**符合资源链接的合理值，对于[关联对象][relationships]的描述见上。
 
 {%comment%}
 The top-level [links object][links] **MAY** contain `self` and `related` links,
 as described above for [relationship objects][relationships].
 {%endcomment%}
-顶层[链接对象][links] **可以** 包含`self`和`related`链接，对于[关联对象][relationships]的描述见上。
+顶层[链接对象][links]**可以**包含`self`和`related`链接，对于[关联对象][relationships]的描述见上。
 
 {%comment%}
 For example, a `GET` request to a URL from a to-one relationship link could
@@ -1369,65 +1369,65 @@ does not exist. For example, when `/articles/1` does not exist, request to`/arti
 If a relationship link URL exists but the relationship is empty, then
 `200 OK` **MUST** be returned, as described above.
 {%endcomment%}
-如果关联链接URL存在，但关联是空的，那么 **必须** 返回`200 OK` ，如上文所述。
+如果关联链接URL存在，但关联是空的，那么**必须**返回`200 OK` ，如上文所述。
 
 ##### <a href="#fetching-relationships-responses-other" id="fetching-relationships-responses-other" class="headerlink"></a> {%comment%}Other Responses{%endcomment%}其他响应
 
 {%comment%}
 A server **MAY** respond with other HTTP status codes.
 {%endcomment%}
-服务器 **可以** 用其他 HTTP 状态代码作为响应。
+服务器**可以**用其他 HTTP 状态代码作为响应。
 
 {%comment%}
 A server **MAY** include [error details] with error responses.
 {%endcomment%}
-服务器 **可以** 使用错误响应包含错误的详细信息。
+服务器**可以**使用错误响应包含错误的详细信息。
 
 {%comment%}
 A server **MUST** prepare responses, and a client **MUST** interpret
 responses, in accordance with
 [`HTTP semantics`](http://tools.ietf.org/html/rfc7231).
 {%endcomment%}
-服务器 **必须** 准备响应，且客户端 **必须** 根据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
+服务器**必须**准备响应，且客户端**必须**根据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
 
 ### <a href="#fetching-includes" id="fetching-includes" class="headerlink"></a>{%comment%} Inclusion of Related Resources{%endcomment%}相关资源的包含
 
 {%comment%}
 An endpoint **MAY** return resources related to the primary data by default.
 {%endcomment%}
-端点 **可以** 返回默认情况下与主数据相联的资源。
+端点**可以**返回默认情况下与主数据相联的资源。
 
 {%comment%}
 An endpoint **MAY** also support an `include` request parameter to allow the
 client to customize which related resources should be returned.
 {%endcomment%}
-端点 **可能** 还支持`included`请求参数，以允许客户端应该返回自定义的相关资源。
+端点**可能**还支持`included`请求参数，以允许客户端应该返回自定义的相关资源。
 
 {%comment%}
 If an endpoint does not support the `include` parameter, it **MUST** respond
 with `400 Bad Request` to any requests that include it.
 {%endcomment%}
-如果端点不支持`included`参数，那么任何包含它的请求，服务器 **必须** 响应`400 Bad Request`。
+如果端点不支持`included`参数，那么任何包含它的请求，服务器**必须**响应`400 Bad Request`。
 
 {%comment%}
 If an endpoint supports the `include` parameter and a client supplies it,
 the server **MUST NOT** include unrequested [resource objects] in the `included`
 section of the [compound document].
 {%endcomment%}
-如果端点支持`included`参数并且由客户端提供它，服务器在[复合文档]中`included`节中 **不能** 包含未请求的[资源对象].
+如果端点支持`included`参数并且由客户端提供它，服务器在[复合文档]中`included`节中**不能**包含未请求的[资源对象].
 
 {%comment%}
 The value of the `include` parameter **MUST** be a comma-separated (U+002C
 COMMA, ",") list of relationship paths. A relationship path is a dot-separated
 (U+002E FULL-STOP, ".") list of [relationship][relationships] names.
 {%endcomment%}
-`include`参数的值 **必须** 是英文逗号分隔 （U+002C + 逗号,"，"） 的关联路径列表。关联路径是圆点分隔 (U + 002E 句号,".") 的[关联][relationships]名称列表。
+`include`参数的值**必须**是英文逗号分隔 （U+002C + 逗号,"，"） 的关联路径列表。关联路径是圆点分隔 (U + 002E 句号,".") 的[关联][relationships]名称列表。
 
 {%comment%}
 If a server is unable to identify a relationship path or does not support
 inclusion of resources from a path, it **MUST** respond with 400 Bad Request.
 {%endcomment%}
-如果服务器无法识别关联路径或不支持从一个路径包含资源，它 **必须** 做出`400 Bad Request`响应。
+如果服务器无法识别关联路径或不支持从一个路径包含资源，它**必须**做出`400 Bad Request`响应。
 
 {%comment%}
 > Note: For example, a relationship path could be `comments.author`, where
@@ -1523,20 +1523,20 @@ resource or relationship.
 A client **MAY** request that an endpoint return only specific [fields] in the
 response on a per-type basis by including a `fields[TYPE]` parameter.
 {%endcomment%}
-客户端 **可以** 请求一个端点返回，只能在响应中每种类型的基础上指定[fields]中包含特定`fields[TYPE]`参数。
+客户端**可以**请求一个端点返回，只能在响应中每种类型的基础上指定[fields]中包含特定`fields[TYPE]`参数。
 
 {%comment%}
 The value of the `fields` parameter **MUST** be a comma-separated (U+002C
 COMMA, ",") list that refers to the name(s) of the fields to be returned.
 {%endcomment%}
-`fields`的值 **必须** 是用逗号分隔（U +002 C + 逗号,"，"）的列表 ，该列表指的是要返回字段的名称列表。
+`fields`的值**必须**是用逗号分隔（U +002 C + 逗号,"，"）的列表 ，该列表指的是要返回字段的名称列表。
 
 {%comment%}
 If a client requests a restricted set of [fields] for a given resource type,
 an endpoint **MUST NOT** include additional [fields] in resource objects of
 that type in its response.
 {%endcomment%}
-如果客户端请求一组限定资源类型的[fields]，端点的响应 **不能** 包含附加[fields]在该类型的资源对象中。
+如果客户端请求一组限定资源类型的[fields]，端点的响应**不能**包含附加[fields]在该类型的资源对象中。
 
 ```http
 GET /articles?include=author&fields[articles]=title,body&fields[people]=name HTTP/1.1
@@ -1566,7 +1566,7 @@ a resource.
 A server **MAY** choose to support requests to sort resource collections
 according to one or more criteria ("sort fields").
 {%endcomment%}
-服务器 **可以** 支持对请求根据一个或多个标准（"排序字段"）对资源集合进行排序。
+服务器**可以**支持对请求根据一个或多个标准（"排序字段"）对资源集合进行排序。
 
 {%comment%}
 > Note: Although recommended, sort fields do not necessarily need to
@@ -1589,7 +1589,7 @@ relationship.
 An endpoint **MAY** support requests to sort the primary data with a `sort`
 query parameter. The value for `sort` **MUST** represent sort fields.
 {%endcomment%}
-端点 **可以** 支持通过包含`sort`的查询参数请求进行主要数据的排序。`sort` **必须** 代表排序字段的值。
+端点**可以**支持通过包含`sort`的查询参数请求进行主要数据的排序。`sort`**必须**代表排序字段的值。
 
 ```http
 GET /people?sort=age HTTP/1.1
@@ -1601,7 +1601,7 @@ An endpoint **MAY** support multiple sort fields by allowing comma-separated
 (U+002C COMMA, ",") sort fields. Sort fields **SHOULD** be applied in the
 order specified.
 {%endcomment%}
-端点 **可以** 支持多个排序字段，通过允许逗号分隔 （U+002 C + 逗号, "，"） 排序字段。排序字段 **应该** 应用于指定排序。
+端点**可以**支持多个排序字段，通过允许逗号分隔 （U+002 C + 逗号, "，"） 排序字段。排序字段**应该**应用于指定排序。
 
 ```http
 GET /people?sort=age,name HTTP/1.1
@@ -1612,7 +1612,7 @@ Accept: application/vnd.api+json
 The sort order for each sort field **MUST** be ascending unless it is prefixed
 with a minus (U+002D HYPHEN-MINUS, "-"), in which case it **MUST** be descending.
 {%endcomment%}
-每个排序字段的排序顺序 **必须** 升序，除非它以减号作为前缀 (U + 002D 连字符-负号，"-")，在这种情况下它 **必须** 降序。
+每个排序字段的排序顺序**必须**升序，除非它以减号作为前缀 (U + 002D 连字符-负号，"-")，在这种情况下它**必须**降序。
 
 ```http
 GET /articles?sort=-created,title HTTP/1.1
@@ -1639,7 +1639,7 @@ parameter `sort`, the server **MUST** return elements of the top-level
 The server **MAY** apply default sorting rules to top-level `data` if
 request parameter `sort` is not specified.
 {%endcomment%}
-如果排序是服务器所支持的并且查询参数`sort`通过客户端请求，服务器 **必须** 返回根据指定条件排序的顶层元素`data`数组响应。如果请求不指定`sort`参数，服务器 **可以** 应用默认排序规则对顶级`data`进行排序。
+如果排序是服务器所支持的并且查询参数`sort`通过客户端请求，服务器**必须**返回根据指定条件排序的顶层元素`data`数组响应。如果请求不指定`sort`参数，服务器**可以**应用默认排序规则对顶级`data`进行排序。
 
 {%comment%}
 > Note: This section applies to any endpoint that responds with a resource
@@ -1654,13 +1654,13 @@ collection as primary data, regardless of the request type.
 A server **MAY** choose to limit the number of resources returned in a response
 to a subset ("page") of the whole set available.
 {%endcomment%}
-为了让整个集合的一个子集 （"页面"） 可用，服务器 **可以** 选择限制响应中返回的资源数量。
+为了让整个集合的一个子集 （"页面"） 可用，服务器**可以**选择限制响应中返回的资源数量。
 
 {%comment%}
 A server **MAY** provide links to traverse a paginated data set ("pagination
 links").
 {%endcomment%}
-服务器 **可以** 提供链接来遍历一个分页的数据集 （"分页链接"）。
+服务器**可以**提供链接来遍历一个分页的数据集 （"分页链接"）。
 
 {%comment%}
 Pagination links **MUST** appear in the links object that corresponds to a
@@ -1669,7 +1669,7 @@ top-level `links` object. To paginate an included collection returned in
 a [compound document], supply pagination links in the corresponding links
 object.
 {%endcomment%}
-分页链接 **必须** 出现在对应于一个集合的链接对象中。为了对主要数据进行分页，在顶级`links`对象中提供分页链接。要分页在返回的复合文档中所包含的集合，提供分页链接中对应的链接对象。
+分页链接**必须**出现在对应于一个集合的链接对象中。为了对主要数据进行分页，在顶级`links`对象中提供分页链接。要分页在返回的复合文档中所包含的集合，提供分页链接中对应的链接对象。
 
 {%comment%}
 The following keys **MUST** be used for pagination links:
@@ -1679,7 +1679,7 @@ The following keys **MUST** be used for pagination links:
 * `prev`: the previous page of data
 * `next`: the next page of data
 {%endcomment%}
-分页链接对象 **必须** 用以下关键字︰
+分页链接对象**必须**用以下关键字︰
 
 * `first`︰ 数据的第一页
 * `last`︰ 数据的最后一页
@@ -1690,19 +1690,19 @@ The following keys **MUST** be used for pagination links:
 Keys **MUST** either be omitted or have a `null` value to indicate that a
 particular link is unavailable.
 {%endcomment%}
-关键词 **必须** 省略或者为空值，以表示特定的链接是不可用的。
+关键词**必须**省略或者为空值，以表示特定的链接是不可用的。
 
 {%comment%}
 Concepts of order, as expressed in the naming of pagination links, **MUST**
 remain consistent with JSON API's [sorting rules](#fetching-sorting).
 {%endcomment%}
-正如表示在分页链接的命名中那样，顺序的概念 **必须** 与JSON API[排序规则](#fetching-sorting)保持一致。
+正如表示在分页链接的命名中那样，顺序的概念**必须**与JSON API[排序规则](#fetching-sorting)保持一致。
 
 {%comment%}
 The `page` query parameter is reserved for pagination. Servers and clients
 **SHOULD** use this key for pagination operations.
 {%endcomment%}
-`page`查询参数是为分页保留的。服务器和客户端 **应该** 将此关键词用于分页操作。
+`page`查询参数是为分页保留的。服务器和客户端**应该**将此关键词用于分页操作。
 
 {%comment%}
 > Note: JSON API is agnostic about the pagination strategy used by a server.
@@ -1737,7 +1737,7 @@ collection as primary data, regardless of the request type.
 The `filter` query parameter is reserved for filtering data. Servers and clients
 **SHOULD** use this key for filtering operations.
 {%endcomment%}
-`filter`查询参数为筛选数据保留。服务器和客户端 **应该** 使用这个关键词进行过滤操作。
+`filter`查询参数为筛选数据保留。服务器和客户端**应该**使用这个关键词进行过滤操作。
 
 {%comment%}
 > Note: JSON API is agnostic about the strategies supported by a server. The
@@ -1780,7 +1780,7 @@ A resource can be created by sending a `POST` request to a URL that represents
 a collection of resources. The request **MUST** include a single [resource object][resource objects]
 as primary data. The [resource object][resource objects] **MUST** contain at least a `type` member.
 {%endcomment%}
-通过发送`POST`请求到资源集合的URL，可以创建一个资源。这个请求 **必须** 包含一个单独的[资源对象][resource objects]作为主要数据。这个[资源对象][resource objects] **必须** 包含至少一个`type`成员。
+通过发送`POST`请求到资源集合的URL，可以创建一个资源。这个请求**必须**包含一个单独的[资源对象][resource objects]作为主要数据。这个[资源对象][resource objects]**必须**包含至少一个`type`成员。
 
 {%comment%}
 For instance, a new photo might be created with the following request:
@@ -1814,7 +1814,7 @@ If a relationship is provided in the `relationships` member of the
 member. The value of this key represents the linkage the new resource is to
 have.
 {%endcomment%}
-如果[资源对象][resource objects]中的`relationships`成员被提供了一种关联，那么它的值 **必须** 是一个关联对象与一个`data`成员。此关键字的值代表新的资源是有关联的。
+如果[资源对象][resource objects]中的`relationships`成员被提供了一种关联，那么它的值**必须**是一个关联对象与一个`data`成员。此关键字的值代表新的资源是有关联的。
 
 #### <a href="#crud-creating-client-ids" id="crud-creating-client-ids" class="headerlink"></a>{%comment%} Client-Generated IDs{%endcomment%}客户端生成的ID
 
@@ -1825,7 +1825,7 @@ which **MUST** be a universally unique identifier. The client **SHOULD** use
 a properly generated and formatted *UUID* as described in RFC 4122
 [[RFC4122](http://tools.ietf.org/html/rfc4122.html)].
 {%endcomment%}
-服务器 **可以** 接受客户端生成的ID伴随在请求中去创建资源。ID **必须** 指定`id`关键词，它的值 **必须** 是一个通用唯一标识符。客户端应该使用正确生成和格式化的 *UUID* 如RFC 4122 [[RFC4122](http://tools.ietf.org/html/rfc4122.html)]中所述.
+服务器**可以**接受客户端生成的ID伴随在请求中去创建资源。ID**必须**指定`id`关键词，它的值**必须**是一个通用唯一标识符。客户端应该使用正确生成和格式化的 *UUID* 如RFC 4122 [[RFC4122](http://tools.ietf.org/html/rfc4122.html)]中所述.
 
 {%comment%}
 > NOTE: In some use-cases, such as importing data from another source, it
@@ -1860,7 +1860,7 @@ Accept: application/vnd.api+json
 A server **MUST** return `403 Forbidden` in response to an unsupported request
 to create a resource with a client-generated ID.
 {%endcomment%}
-服务器 **必须** 返回`403 Forbidden`以响应不支持使用客户端生成的 ID请求创建资源。
+服务器**必须**返回`403 Forbidden`以响应不支持使用客户端生成的 ID请求创建资源。
 
 #### <a href="#crud-creating-responses" id="crud-creating-responses" class="headerlink"></a> {%comment%}Responses{%endcomment%}响应
 
@@ -1871,26 +1871,26 @@ If a `POST` request did not include a [Client-Generated
 ID](#crud-creating-client-ids) and the requested resource has been created
 successfully, the server **MUST** return a `201 Created` status code.
 {%endcomment%}
-如果一个`POST`请求不包含一个客户端生成的ID并且所请求的资源已成功创建过的，服务器 **必须** 返回一个`201 Created`状态代码。
+如果一个`POST`请求不包含一个客户端生成的ID并且所请求的资源已成功创建过的，服务器**必须**返回一个`201 Created`状态代码。
 
 {%comment%}
 The response **SHOULD** include a `Location` header identifying the location
 of the newly created resource.
 {%endcomment%}
-响应 **应该** 包含确定新创建资源位置的Location标头。
+响应**应该**包含确定新创建资源位置的Location标头。
 
 {%comment%}
 The response **MUST** also include a document that contains the primary
 resource created.
 {%endcomment%}
-响应 **必须** 还包含创建主要资源的文档。
+响应**必须**还包含创建主要资源的文档。
 
 {%comment%}
 If the [resource object][resource objects] returned by the response contains a `self` key in its
 `links` member and a `Location` header is provided, the value of the `self`
 member **MUST** match the value of the `Location` header.
 {%endcomment%}
-如果返回响应的资源对象在其`links`成员中包含`self`关键词，并且提供`Location`标头，s`elf`成员的值 **必须** 与`Location`标头的值相一致。
+如果返回响应的资源对象在其`links`成员中包含`self`关键词，并且提供`Location`标头，s`elf`成员的值**必须**与`Location`标头的值相一致。
 
 ```http
 HTTP/1.1 201 Created
@@ -1919,7 +1919,7 @@ If a request to create a resource has been accepted for processing, but the
 processing has not been completed by the time the server responds, the
 server **MUST** return a `202 Accepted` status code.
 {%endcomment%}
-如果要创建资源的请求已被接受处理，但处理尚未完成的时候，服务器 **必须** 返回`202 Accepted`状态代码。
+如果要创建资源的请求已被接受处理，但处理尚未完成的时候，服务器**必须**返回`202 Accepted`状态代码。
 
 ##### <a href="#crud-creating-responses-204" id="crud-creating-responses-204" class="headerlink"></a> 204 No Content
 
@@ -1930,7 +1930,7 @@ successfully, the server **MUST** return either a `201 Created` status code
 and response document (as described above) or a `204 No Content` status code
 with no response document.
 {%endcomment%}
-如果`POST`请求包括一个客户端生成的 ID 并且所请求的资源已成功创建，服务器 **必须** 返回`201 Created`状态代码和响应文档 （如上文所述） 或`204 No Content`状态代码不响应文档。
+如果`POST`请求包括一个客户端生成的 ID 并且所请求的资源已成功创建，服务器**必须**返回`201 Created`状态代码和响应文档 （如上文所述） 或`204 No Content`状态代码不响应文档。
 
 {%comment%}
 > Note: If a `204` response is received the client should consider the resource
@@ -1946,7 +1946,7 @@ had returned it back in a `201` response.
 A server **MAY** return `403 Forbidden` in response to an unsupported request
 to create a resource.
 {%endcomment%}
-服务器 **可以** 对不支持创建资源的请求来响应`403 Forbidden`。
+服务器**可以**对不支持创建资源的请求来响应`403 Forbidden`。
 
 ##### <a href="#crud-creating-responses-409" id="crud-creating-responses-409" class="headerlink"></a> 409 Conflict
 
@@ -1954,20 +1954,20 @@ to create a resource.
 A server **MUST** return `409 Conflict` when processing a `POST` request to
 create a resource with a client-generated ID that already exists.
 {%endcomment%}
-服务器 **必须** 返回`409 Conflict`来处理通过一个已经存在的客户端生成ID 来发送`POST`请求创建资源的情况。
+服务器**必须**返回`409 Conflict`来处理通过一个已经存在的客户端生成ID 来发送`POST`请求创建资源的情况。
 
 {%comment%}
 A server **MUST** return `409 Conflict` when processing a `POST` request in
 which the [resource object][resource objects]'s `type` is not among the type(s) that constitute the
 collection represented by the endpoint.
 {%endcomment%}
-服务器 **必须** 返回`409 Conflict`处理`POST`请求资源对象的`type`不是构成该端点所表示的集合类型的情况。
+服务器**必须**返回`409 Conflict`处理`POST`请求资源对象的`type`不是构成该端点所表示的集合类型的情况。
 
 {%comment%}
 A server **SHOULD** include error details and provide enough information to
 recognize the source of the conflict.
 {%endcomment%}
-服务器 **应该** 包含错误详细信息并提供足够的信息来识别冲突的来源。
+服务器**应该**包含错误详细信息并提供足够的信息来识别冲突的来源。
 
 ##### <a href="#crud-creating-responses-other" id="crud-creating-responses-other" class="headerlink"></a> {%comment%}Other Responses{%endcomment%}其他响应
 
@@ -1980,9 +1980,9 @@ A server **MUST** prepare responses, and a client **MUST** interpret
 responses, in accordance with
 [`HTTP semantics`](http://tools.ietf.org/html/rfc7231).
 {%endcomment%}
-服务器 **可以** 用其他 HTTP 状态代码作为响应。
-服务器 **可以** 使用包含错误的详细信息的错误响应。
-服务器 **必须** 准备响应，且客户端 **必须** 根据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
+服务器**可以**用其他 HTTP 状态代码作为响应。
+服务器**可以**使用包含错误的详细信息的错误响应。
+服务器**必须**准备响应，且客户端**必须**根据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
 
 ### <a href="#crud-updating" id="crud-updating" class="headerlink"></a> {%comment%}Updating Resources{%endcomment%}更新资源
 
@@ -2005,7 +2005,7 @@ The [resource object][resource objects] **MUST** contain `type` and `id` members
 
 For example:
 {%endcomment%}
-`PATCH`请求 **必须** 包含单一的[资源对象][resource objects]作为主要数据。[资源对象][resource objects] **必须** 包含`type`和`id`的成员。
+`PATCH`请求**必须**包含单一的[资源对象][resource objects]作为主要数据。[资源对象][resource objects]**必须**包含`type`和`id`的成员。
 
 例如：
 
@@ -2031,7 +2031,7 @@ Accept: application/vnd.api+json
 Any or all of a resource's [attributes] **MAY** be included in the resource
 object included in a `PATCH` request.
 {%endcomment%}
-资源的任何或所有的[attributes] **可以** 包含在`PATCH`请求的资源对象中。
+资源的任何或所有的[attributes]**可以**包含在`PATCH`请求的资源对象中。
 
 {%comment%}
 If a request does not include all of the [attributes] for a resource, the server
@@ -2070,14 +2070,14 @@ Accept: application/vnd.api+json
 Any or all of a resource's [relationships] **MAY** be included in the resource
 object included in a `PATCH` request.
 {%endcomment%}
-资源的任何或所有relationships **可以** 包含在PATCH请求中的资源对象中。
+资源的任何或所有relationships**可以**包含在PATCH请求中的资源对象中。
 
 {%comment%}
 If a request does not include all of the [relationships] for a resource, the server
 **MUST** interpret the missing [relationships] as if they were included with their
 current values. It **MUST NOT** interpret them as `null` or empty values.
 {%endcomment%}
-如果请求没有包含资源的所有关联，服务器 **必须** 解释缺失关联与其当前值，就好像包含了一样。服务器 **不能** 把它们解释为空或空值。
+如果请求没有包含资源的所有关联，服务器**必须**解释缺失关联与其当前值，就好像包含了一样。服务器**不能**把它们解释为空或空值。
 
 {%comment%}
 If a relationship is provided in the `relationships` member of a resource
@@ -2142,7 +2142,7 @@ A server **MAY** reject an attempt to do a full replacement of a to-many
 relationship. In such a case, the server **MUST** reject the entire update,
 and return a `403 Forbidden` response.
 {%endcomment%}
-服务器 **可以** 拒绝执行完全的一到多关联的替换。在这种情况下，服务器 **必须** 拒绝整个更新，并返回一个`403 Forbidden`响应信号。
+服务器**可以**拒绝执行完全的一到多关联的替换。在这种情况下，服务器**必须**拒绝整个更新，并返回一个`403 Forbidden`响应信号。
 
 {%comment%}
 > Note: Since full replacement may be a very dangerous operation, a server
@@ -2162,7 +2162,7 @@ If an update request has been accepted for processing, but the processing
 has not been completed by the time the server responds, the server **MUST**
 return a `202 Accepted` status code.
 {%endcomment%}
-如果更新请求已被接受处理，但是服务器响应期间的处理还没有结束，服务器 **必须** 返回一个`202 Accepted`状态码。
+如果更新请求已被接受处理，但是服务器响应期间的处理还没有结束，服务器**必须**返回一个`202 Accepted`状态码。
 
 ##### <a href="#crud-updating-responses-200" id="crud-updating-responses-200" class="headerlink"></a> 200 OK
 
@@ -2173,7 +2173,7 @@ attribute or a computed `sha`), it **MUST** return a `200 OK` response. The
 response document **MUST** include a representation of the updated
 resource(s) as if a `GET` request was made to the request URL.
 {%endcomment%}
-如果服务器接受了更新，但也（除按请求所指定的方式）对资源做了修改（例如，更新`updated-at`属性或计算sha值),它 **必须** 返回一个`200 OK`响应。响应文档 **必须** 包括已更新资源实例，就好像向请求的URL发出了`GET`请求。
+如果服务器接受了更新，但也（除按请求所指定的方式）对资源做了修改（例如，更新`updated-at`属性或计算sha值),它**必须**返回一个`200 OK`响应。响应文档**必须**包括已更新资源实例，就好像向请求的URL发出了`GET`请求。
 
 {%comment%}
 A server **MUST** return a `200 OK` status code if an update is successful,
@@ -2181,7 +2181,7 @@ the client's current attributes remain up to date, and the server responds
 only with top-level [meta] data. In this case the server **MUST NOT**
 include a representation of the updated resource(s).
 {%endcomment%}
-如果更新成功，服务器 **必须** 返回一个`200 OK`的状态码，保持客户端的当前属性为最新，服务器只响应顶层的元[meta]数据。这种情况下，服务器 **不能** 包含已更新资源的实例。
+如果更新成功，服务器**必须**返回一个`200 OK`的状态码，保持客户端的当前属性为最新，服务器只响应顶层的元[meta]数据。这种情况下，服务器**不能**包含已更新资源的实例。
 
 ##### <a href="#crud-updating-responses-204" id="crud-updating-responses-204" class="headerlink"></a> 204 No Content
 
@@ -2191,7 +2191,7 @@ those provided, the server **MUST** return either a `200 OK` status code and
 response document (as described above) or a `204 No Content` status code with no
 response document.
 {%endcomment%}
-如果更新成功且服务器没有更新除提供更新之外的任何属性，服务器 **必须** 返回`200 OK`状态码和响应文档（如上所述）或 没有响应文档的`204 No Content`状态码。
+如果更新成功且服务器没有更新除提供更新之外的任何属性，服务器**必须**返回`200 OK`状态码和响应文档（如上所述）或 没有响应文档的`204 No Content`状态码。
 
 ##### <a href="#crud-updating-relationship-responses-403" id="crud-updating-relationship-responses-403" class="headerlink"></a> 403 Forbidden
 
@@ -2199,7 +2199,7 @@ response document.
 A server **MUST** return `403 Forbidden` in response to an unsupported request
 to update a resource or relationship.
 {%endcomment%}
-服务器 **必须** 返回`403 Forbidden`来响应一个不支持更新资源或关联的请求。
+服务器**必须**返回`403 Forbidden`来响应一个不支持更新资源或关联的请求。
 
 ##### <a href="#crud-updating-responses-404" id="crud-updating-responses-404" class="headerlink"></a> 404 Not Found
 
@@ -2207,13 +2207,13 @@ to update a resource or relationship.
 A server **MUST** return `404 Not Found` when processing a request to modify
 a resource that does not exist.
 {%endcomment%}
-当处理修改不存在的资源请求时，服务器 **必须** 返回`404 Not Found`。
+当处理修改不存在的资源请求时，服务器**必须**返回`404 Not Found`。
 
 {%comment%}
 A server **MUST** return `404 Not Found` when processing a request that
 references a related resource that does not exist.
 {%endcomment%}
-当处理引用不存在的相关资源请求时，服务器 **必须** 返回`404 Not Found`。
+当处理引用不存在的相关资源请求时，服务器**必须**返回`404 Not Found`。
 
 ##### <a href="#crud-updating-responses-409" id="crud-updating-responses-409" class="headerlink"></a> 409 Conflict
 
@@ -2229,7 +2229,7 @@ A server **MUST** return `409 Conflict` when processing a `PATCH` request in
 which the resource object's `type` and `id` do not match the server's endpoint.
 {%endcomment%}
 在处理一个`PATCH`请求时，资源对象的`type`和`id`和服务器的端点数据不匹配，
-服务器 **必须** 返回`409 Conflict`。
+服务器**必须**返回`409 Conflict`。
 
 {%comment%}
 A server **SHOULD** include error details and provide enough information to
@@ -2248,11 +2248,11 @@ A server **MUST** prepare responses, and a client **MUST** interpret
 responses, in accordance with
 [`HTTP semantics`](http://tools.ietf.org/html/rfc7231).
 {%endcomment%}
-服务器 **可以** 响应其他HTTP状态码。
+服务器**可以**响应其他HTTP状态码。
 
-服务器 **可以** 包含错误的详细信息。
+服务器**可以**包含错误的详细信息。
 
-服务器 **必须** 准备响应，客户端 **必须** 根据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释这些错误信息。
+服务器**必须**准备响应，客户端**必须**根据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释这些错误信息。
 
 ### <a href="#crud-updating-relationships" id="crud-updating-relationships" class="headerlink"></a>{%comment%} Updating Relationships{%endcomment%}更新关联
 
@@ -2292,13 +2292,13 @@ relationship is deleted (as a garbage collection measure).
 A server **MUST** respond to `PATCH` requests to a URL from a to-one
 [relationship link][relationships] as described below.
 {%endcomment%}
-服务器 **必须** 响应一个来自多[关联链接][relationships]的网址的`PATCH`请求，如下面所描述的。
+服务器**必须**响应一个来自多[关联链接][relationships]的网址的`PATCH`请求，如下面所描述的。
 
 {%comment%}
 The `PATCH` request **MUST** include a top-level member named `data` containing
 one of:
 {%endcomment%}
-该`PATCH`请求 **必须** 包含一个顶层成员命名的`data`,包含:
+该`PATCH`请求**必须**包含一个顶层成员命名的`data`,包含:
 
 {%comment%}
 * a [resource identifier object] corresponding to the new related resource.
@@ -2342,7 +2342,7 @@ Accept: application/vnd.api+json
 If the relationship is updated successfully then the server **MUST** return
 a successful response.
 {%endcomment%}
-如果关联更新成功，则服务器 **必须** 返回一个表示成功的响应.
+如果关联更新成功，则服务器**必须**返回一个表示成功的响应.
 
 #### <a href="#crud-updating-to-many-relationships" id="crud-updating-to-many-relationships" class="headerlink"></a> {%comment%}Updating To-Many Relationships{%endcomment%}更新多个关联
 
@@ -2350,13 +2350,13 @@ a successful response.
 A server **MUST** respond to `PATCH`, `POST`, and `DELETE` requests to a
 URL from a to-many [relationship link][relationships] as described below.
 {%endcomment%}
-服务器 **必须** 响应`PATCH`、`POST`和`DELETE`请求至一个URL，它来自到多[关联链接][relationships]，如下所述.
+服务器**必须**响应`PATCH`、`POST`和`DELETE`请求至一个URL，它来自到多[关联链接][relationships]，如下所述.
 
 {%comment%}
 For all request types, the body **MUST** contain a `data` member whose value
 is an empty array or an array of [resource identifier objects][resource identifier object].
 {%endcomment%}
-对于所有请求类型,主体 **必须** 包含一个`data`成员，其值是空数组或[资源标识符对象][resource identifier object]数组。
+对于所有请求类型,主体**必须**包含一个`data`成员，其值是空数组或[资源标识符对象][resource identifier object]数组。
 
 {%comment%}
 If a client makes a `PATCH` request to a URL from a to-many
@@ -2365,7 +2365,7 @@ replace every member of the relationship, return an appropriate error response
 if some resources can not be found or accessed, or return a `403 Forbidden`
 response if complete replacement is not allowed by the server.
 {%endcomment%}
-如果客户端向一个到多[关联链接][relationships]的URL发出`PATCH`请求,则服务器 **必须** 完全替换关联中的每一个成员，并且，如果无法找到或访问某些资源，则服务器返回一个适当的错误响应，或者如果服务器不允许完全替换，则返回一个`403 Forbidden`响应。
+如果客户端向一个到多[关联链接][relationships]的URL发出`PATCH`请求,则服务器**必须**完全替换关联中的每一个成员，并且，如果无法找到或访问某些资源，则服务器返回一个适当的错误响应，或者如果服务器不允许完全替换，则返回一个`403 Forbidden`响应。
 
 {%comment%}
 For example, the following request replaces every tag for an article:
@@ -2406,7 +2406,7 @@ If a client makes a `POST` request to a URL from a
 members to the relationship unless they are already present. If a given `type`
 and `id` is already in the relationship, the server **MUST NOT** add it again.
 {%endcomment%}
-如果客户端向一个[关联链接][relationships]的URL发出`POST`请求，服务器 **必须** 将不存在的指定成员添加到关联中。如果一个给定的`type`和`id`已在关联中，则服务器 **不能** 重复添加。
+如果客户端向一个[关联链接][relationships]的URL发出`POST`请求，服务器**必须**将不存在的指定成员添加到关联中。如果一个给定的`type`和`id`已在关联中，则服务器**不能**重复添加。
 
 {%comment%}
 > Note: This matches the semantics of databases that use foreign keys for
@@ -2420,7 +2420,7 @@ relationship before appending to avoid duplicates.
 If all of the specified resources can be added to, or are already present
 in, the relationship then the server **MUST** return a successful response.
 {%endcomment%}
-如果所有的指定资源都可以添加到关联，或则其已经存在于关联中，则服务器 **必须** 返回的表示成功的响应。
+如果所有的指定资源都可以添加到关联，或则其已经存在于关联中，则服务器**必须**返回的表示成功的响应。
 
 {%comment%}
 > Note: This approach ensures that a request is successful if the server's
@@ -2456,7 +2456,7 @@ members from the relationship or return a `403 Forbidden` response. If all of
 the specified resources are able to be removed from, or are already missing
 from, the relationship then the server **MUST** return a successful response.
 {%endcomment%}
-如果客户端向一个[关联链接][relationships]中的URL发起`DELETE`请求，服务器 **必须** 从关联中删除指定的成员，或返回 `403 Forbidden`响应。如果所有的指定资源都被移除，或者已经在关联中丢失了，服务器 **必须** 返回一个表示成功的响应。
+如果客户端向一个[关联链接][relationships]中的URL发起`DELETE`请求，服务器**必须**从关联中删除指定的成员，或返回 `403 Forbidden`响应。如果所有的指定资源都被移除，或者已经在关联中丢失了，服务器**必须**返回一个表示成功的响应。
 
 {%comment%}
 > Note: As described above for `POST` requests, this approach helps avoid
@@ -2534,7 +2534,7 @@ in other ways than those specified by the request, it **MUST** return a `200
 OK` response. The response document **MUST** include a representation of the
 updated relationship(s).
 {%endcomment%}
-如果服务器接受更新，但也（除按请求所指明的方式）对资源做了更改，它 **必须** 返回一个`200 OK` 的响应。响应文档 **必须** 包含已更新关联的实例表示。
+如果服务器接受更新，但也（除按请求所指明的方式）对资源做了更改，它**必须**返回一个`200 OK` 的响应。响应文档**必须**包含已更新关联的实例表示。
 
 {%comment%}
 A server **MUST** return a `200 OK` status code if an update is successful,
@@ -2542,7 +2542,7 @@ the client's current data remain up to date, and the server responds
 only with top-level [meta] data. In this case the server **MUST NOT**
 include a representation of the updated relationship(s).
 {%endcomment%}
-如果更新成功，服务器 **必须** 返回`200 OK`状态码，客户端当前数据保持最新，服务器只响应顶层的[meta]数据。在这种情况下，服务器 **不能** 包含已更新关联的实例表示。
+如果更新成功，服务器**必须**返回`200 OK`状态码，客户端当前数据保持最新，服务器只响应顶层的[meta]数据。在这种情况下，服务器**不能**包含已更新关联的实例表示。
 
 ##### <a href="#crud-updating-relationship-responses-403" id="crud-updating-relationship-responses-403" class="headerlink"></a> 403 Forbidden
 
@@ -2550,7 +2550,7 @@ include a representation of the updated relationship(s).
 A server **MUST** return `403 Forbidden` in response to an unsupported request
 to update a relationship.
 {%endcomment%}
-对于用不支持的请求来更新关联时，服务器 **必须** 返回`403 Forbidden`响应。
+对于用不支持的请求来更新关联时，服务器**必须**返回`403 Forbidden`响应。
 
 ##### <a href="#crud-updating-relationship-responses-other" id="crud-updating-relationship-responses-other" class="headerlink"></a> {%comment%}Other Responses{%endcomment%}其他响应
 
@@ -2563,11 +2563,11 @@ A server **MUST** prepare responses, and a client **MUST** interpret
 responses, in accordance with
 [`HTTP semantics`](http://tools.ietf.org/html/rfc7231).
 {%endcomment%}
-服务器 **可以** 响应其他HTTP状态码。
+服务器**可以**响应其他HTTP状态码。
 
-服务器 **可以** 包括错误资料与错误响应。
+服务器**可以**包括错误资料与错误响应。
 
-服务器 **必须** 做好响应准备，客户端 **必须** 依据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
+服务器**必须**做好响应准备，客户端**必须**依据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
 
 ### <a href="#crud-deleting" id="crud-deleting" class="headerlink"></a> {%comment%}Deleting Resources{%endcomment%}删除资源
 
@@ -2591,7 +2591,7 @@ If a deletion request has been accepted for processing, but the processing has
 not been completed by the time the server responds, the server **MUST**
 return a `202 Accepted` status code.
 {%endcomment%}
-如果接受处理一个删除请求，但是服务器响应处理还没有完成，则服务器 **必须** 返回一个`202 Accepted`的状态码。
+如果接受处理一个删除请求，但是服务器响应处理还没有完成，则服务器**必须**返回一个`202 Accepted`的状态码。
 
 ##### <a href="#crud-deleting-responses-204" id="crud-deleting-responses-204" class="headerlink"></a> 204 No Content
 
@@ -2599,7 +2599,7 @@ return a `202 Accepted` status code.
 A server **MUST** return a `204 No Content` status code if a deletion
 request is successful and no content is returned.
 {%endcomment%}
-如果删除请求处理成功，且没有内容返回，那么服务器 **必须** 返回一个`204 No Content`状态码。
+如果删除请求处理成功，且没有内容返回，那么服务器**必须**返回一个`204 No Content`状态码。
 
 ##### <a href="#crud-deleting-responses-200" id="crud-deleting-responses-200" class="headerlink"></a> 200 OK
 
@@ -2607,7 +2607,7 @@ request is successful and no content is returned.
 A server **MUST** return a `200 OK` status code if a deletion request is
 successful and the server responds with only top-level [meta] data.
 {%endcomment%}
-如果删除请求成功，且服务器只回应以顶层[meta]数据，那么服务器 **必须** 返回一个`200 OK`状态码。
+如果删除请求成功，且服务器只回应以顶层[meta]数据，那么服务器**必须**返回一个`200 OK`状态码。
 
 ##### <a href="#crud-deleting-responses-other" id="crud-deleting-responses-other" class="headerlink"></a>{%comment%} Other Responses{%endcomment%}其他响应
 
@@ -2620,11 +2620,11 @@ A server **MUST** prepare responses, and a client **MUST** interpret
 responses, in accordance with
 [`HTTP semantics`](http://tools.ietf.org/html/rfc7231).
 {%endcomment%}
-服务器 **可以** 响应其他HTTP状态码。
+服务器**可以**响应其他HTTP状态码。
 
-服务器 **可以** 包括错误信息的错误响应。
+服务器**可以**包括错误信息的错误响应。
 
-服务器 **必须** 做好响应准备，客户端 **必须** 依据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
+服务器**必须**做好响应准备，客户端**必须**依据[HTTP语义](http://tools.ietf.org/html/rfc7231)解释响应。
 
 ## <a href="#query-parameters" id="query-parameters" class="headerlink"></a> {%comment%}Query Parameters{%endcomment%}查询参数
 
@@ -2635,14 +2635,14 @@ least one non a-z character (U+0061 to U+007A). It is **RECOMMENDED** that a
 U+002D HYPHEN-MINUS, "-", U+005F LOW LINE, "_", or capital letter is used
 (e.g. camelCasing).
 {%endcomment%}
-实现特定的查询参数 **必须** 遵循相同的约束，附加要求是作为成员姓名字段 **必须** 至少包含一个非a-z字母字符（U+0061到U+007a）。**可以** 用 U+002D 连字号-负号"-"， U+005F 下划线"_"，或者使用大写字母（如camelCasing）。
+实现特定的查询参数**必须**遵循相同的约束，附加要求是作为成员姓名字段**必须**至少包含一个非a-z字母字符（U+0061到U+007a）。**可以** 用 U+002D 连字号-负号"-"， U+005F 下划线"_"，或者使用大写字母（如camelCasing）。
 
 {%comment%}
 If a server encounters a query parameter that does not follow the naming
 conventions above, and the server does not know how to process it as a query
 parameter from this specification, it **MUST** return `400 Bad Request`.
 {%endcomment%}
-如果服务器处理遇到一个不遵循以上命名规则的查询参数，而服务器不知道如何按此规范处理该查询参数，则服务器 **必须** 返回`400 Bad Request`响应。
+如果服务器处理遇到一个不遵循以上命名规则的查询参数，而服务器不知道如何按此规范处理该查询参数，则服务器**必须**返回`400 Bad Request`响应。
 
 {%comment%}
 > Note: This is to preserve the ability of JSON API to make additive additions
@@ -2660,7 +2660,7 @@ or it **MAY** continue processing and encounter multiple problems. For instance,
 a server might process multiple attributes and then return multiple validation
 problems in a single response.
 {% endcomment %}
-服务器 **可以** 选择在遇到问题时尽快停止处理进程，也 **可以** 选择继续处理并遇到更多的问题。
+服务器**可以**选择在遇到问题时尽快停止处理进程，也**可以**选择继续处理并遇到更多的问题。
 例如，服务器可能会处理多个属性，然后会将多个验证错误放在同一个响应中返回。
 
 {%comment%}
@@ -2669,7 +2669,7 @@ generally applicable HTTP error code **SHOULD** be used in the response. For
 instance, `400 Bad Request` might be appropriate for multiple 4xx errors
 or `500 Internal Server Error` might be appropriate for multiple 5xx errors.
 {%endcomment%}
-当服务器遇到一个请求的多个问题时，响应 **应该** 是最普遍适用的HTTP错误代码。例如，`400 Bad Request`可以适用于4xx错误，或者`500 Internal Server Error`可以适用于5xx错误。
+当服务器遇到一个请求的多个问题时，响应**应该**是最普遍适用的HTTP错误代码。例如，`400 Bad Request`可以适用于4xx错误，或者`500 Internal Server Error`可以适用于5xx错误。
 
 ### <a href="#error-objects" id="error-objects" class="headerlink"></a> {%comment%}Error Objects{%endcomment%}错误对象
 
@@ -2678,7 +2678,7 @@ Error objects provide additional information about problems encountered while
 performing an operation. Error objects **MUST** be returned as an array
 keyed by `errors` in the top level of a JSON API document.
 {%endcomment%}
-错误对象在执行操作时提供了有关问题的附加信息。在JSON API文档的顶层中，错误对象 **必须** 作为一个错误键数组返回。
+错误对象在执行操作时提供了有关问题的附加信息。在JSON API文档的顶层中，错误对象**必须**作为一个错误键数组返回。
 
 {%comment%}
 An error object **MAY** have the following members:
@@ -2705,14 +2705,14 @@ An error object **MAY** have the following members:
 * `meta`: a [meta object][meta] containing non-standard meta-information about the
   error.
 {%endcomment%}
-一个错误对象 **可以** 有以下成员：
+一个错误对象**可以**有以下成员：
 
 * `id`: 特定问题的唯一标示符。
 * `links`:一个包含下列成员的[链接对象][links] ：
   * `about`:导致这个特殊问题发生的进一步细节的一个[链接][links] 。
 * `status`:适用于这个问题的HTTP状态码，使用字符串表示。
 * `code`:应用程序特定的错误代码，表示为字符串值。
-* `title`:简短的，可读性高的问题总结，除了国际化本地化处理之外，不同场景下，相同的问题，值是 **不应该** 变动的。
+* `title`:简短的，可读性高的问题总结，除了国际化本地化处理之外，不同场景下，相同的问题，值是**不应该**变动的。
 * `detail`:针对该问题的高可读性解释，就像Title，这个字段的值可以被本地化。
 * `source`:一个包含错误源引用的对象，任选地包含下列任何成员：
   * `pointer`:一个指向请求文档中的关联实体的JSON指针[[RFC6901](https://tools.ietf.org/html/rfc6901)]（例如`”/data”`是对应于一个主要数据对象，或`”/data/attributes/title”` 是对应于一个特定的属性）。

@@ -928,6 +928,42 @@ The following characters **MUST NOT** be used in member names:
 {%endcomment%}
 以下字符不能用在成员名中：
 
+
+- U+002B 加号, "+" _(用于排序)_
+- U+002C 逗号, "," _(作为关联路径间的分隔符)_
+- U+002E 句号, "." _(作为关联路径内的分隔符)_
+- U+005B 左中括号, "[" _(用于稀疏字段中)_
+- U+005D 右中括号, "]" _(用于稀疏字段中)_
+- U+0021 感叹号, "!"
+- U+0022 引号, '"'
+- U+0023 数字符号（井号）, "#"
+- U+0024 美元符, "$"
+- U+0025 百分号, "%"
+- U+0026 与号, "&"
+- U+0027 省略号, "'"
+- U+0028 左括号, "("
+- U+0029 右括号, ")"
+- U+002A 星号, "&#x2a;"
+- U+002F 斜杠, "/"
+- U+003A 冒号, ":"
+- U+003B 分号, ";"
+- U+003C 小于号, "<"
+- U+003D 等号, "="
+- U+003E 大于号, ">"
+- U+003F 问号, "?"
+- U+0040 商用AT符号, "@"
+- U+005C 反斜杠, "\"
+- U+005E 抑扬音符号, "^"
+- U+0060 沉音符, "&#x60;"
+- U+007B 左波形括号, "{"
+- U+007C 竖线, "|"
+- U+007D 右波形括号, "}"
+- U+007E 波浪号, "~"
+- U+007F 删除
+- U+0000 到 U+001F (联合控制)
+>译者注：以上符号均为英文中使用的符号。
+
+{%comment%}
 - U+002B PLUS SIGN, "+" _(used for ordering)_
 - U+002C COMMA, "," _(used as a separator between relationship paths)_
 - U+002E PERIOD, "." _(used as a separator within relationship paths)_
@@ -960,6 +996,7 @@ The following characters **MUST NOT** be used in member names:
 - U+007E TILDE, "~"
 - U+007F DELETE
 - U+0000 to U+001F (C0 Controls)
+{%endcomment%}
 
 ## <a href="#fetching" id="fetching" class="headerlink"></a> {%comment%}Fetching Data{%endcomment%}获取数据
 {%comment%}
@@ -2247,7 +2284,7 @@ the same in both cases.
 relationship is deleted (as a garbage collection measure).
 
 {%endcomment%}
-注：如果关联已被删除（作为垃圾收集措施），服务器可以选择删除底层资源。
+>注：如果关联已被删除（作为垃圾收集措施），服务器可以选择删除底层资源。
 
 #### <a href="#crud-updating-to-one-relationships" id="crud-updating-to-one-relationships" class="headerlink"></a> {%comment%}Updating To-One Relationships{%endcomment%}更新对一关联
 
@@ -2595,40 +2632,55 @@ responses, in accordance with
 Implementation specific query parameters **MUST** adhere to the same constraints
 as [member names] with the additional requirement that they **MUST** contain at
 least one non a-z character (U+0061 to U+007A). It is **RECOMMENDED** that a
-U+002D HYPHEN-MINUS, "-", U+005F LOW LINE, _"_", or capital letter is used
+U+002D HYPHEN-MINUS, "-", U+005F LOW LINE, "_", or capital letter is used
 (e.g. camelCasing).
 {%endcomment%}
+实现特定的查询参数 **必须** 遵循相同的约束，附加要求是作为成员姓名字段 **必须** 至少包含一个非a-z字母字符（U+0061到U+007a）。**可以** 用 U+002D 连字号-负号"-"， U+005F 下划线"_"，或者使用大写字母（如camelCasing）。
 
+{%comment%}
 If a server encounters a query parameter that does not follow the naming
 conventions above, and the server does not know how to process it as a query
 parameter from this specification, it **MUST** return `400 Bad Request`.
+{%endcomment%}
+如果服务器处理遇到一个不遵循以上命名规则的查询参数，而服务器不知道如何按此规范处理该查询参数，则服务器 **必须** 返回`400 Bad Request`响应。
 
+{%comment%}
 > Note: This is to preserve the ability of JSON API to make additive additions
 to standard query parameters without conflicting with existing implementations.
+{%endcomment%}
+>注：这是保护JSONAPI对标准查询参数处理与现有实现冲突而增加的功能。
 
 ## <a href="#errors" id="errors" class="headerlink"></a> 错误{% comment %}Errors{% endcomment %}
 
-### <a href="#errors-processing" id="errors-processing" class="headerlink"></a> 处理错误{% comment %}Processing Errors{% endcomment %}
-服务器**可以**选择在遇到问题时尽快停止处理进程，也**可以**选择继续处理并遇到更多的问题。
-例如，一台服务器可能会处理多个属性，然后会将多个验证错误放在同一个响应中返回。
+### <a href="#errors-processing" id="errors-processing" class="headerlink"></a> 错误处理{% comment %}Processing Errors{% endcomment %}
+
 {% comment %}
 A server **MAY** choose to stop processing as soon as a problem is encountered,
 or it **MAY** continue processing and encounter multiple problems. For instance,
 a server might process multiple attributes and then return multiple validation
 problems in a single response.
 {% endcomment %}
+服务器 **可以** 选择在遇到问题时尽快停止处理进程，也 **可以** 选择继续处理并遇到更多的问题。
+例如，服务器可能会处理多个属性，然后会将多个验证错误放在同一个响应中返回。
 
+{%comment%}
 When a server encounters multiple problems for a single request, the most
 generally applicable HTTP error code **SHOULD** be used in the response. For
 instance, `400 Bad Request` might be appropriate for multiple 4xx errors
 or `500 Internal Server Error` might be appropriate for multiple 5xx errors.
+{%endcomment%}
+当服务器遇到一个请求的多个问题时，响应 **应该** 是最普遍适用的HTTP错误代码。例如，`400 Bad Request`可以适用于4xx错误，或者`500 Internal Server Error`可以适用于5xx错误。
 
-### <a href="#error-objects" id="error-objects" class="headerlink"></a> Error Objects
+### <a href="#error-objects" id="error-objects" class="headerlink"></a> {%comment%}Error Objects{%endcomment%}错误对象
 
+{%comment%}
 Error objects provide additional information about problems encountered while
 performing an operation. Error objects **MUST** be returned as an array
 keyed by `errors` in the top level of a JSON API document.
+{%endcomment%}
+错误对象在执行操作时提供了有关问题的附加信息。在JSON API文档的顶层中，错误对象 **必须** 作为一个错误键数组返回。
 
+{%comment%}
 An error object **MAY** have the following members:
 
 * `id`: a unique identifier for this particular occurrence of the problem.
@@ -2652,6 +2704,20 @@ An error object **MAY** have the following members:
     the error.
 * `meta`: a [meta object][meta] containing non-standard meta-information about the
   error.
+{%endcomment%}
+一个错误对象 **可以** 有以下成员：
+
+* `id`: 特定问题的唯一标示符。
+* `links`:一个包含下列成员的[链接对象][links] ：
+  * `about`:导致这个特殊问题发生的进一步细节的一个[链接][links] 。
+* `status`:适用于这个问题的HTTP状态码，使用字符串表示。
+* `code`:应用程序特定的错误代码，表示为字符串值。
+* `title`:简短的，可读性高的问题总结，除了国际化本地化处理之外，不同场景下，相同的问题，值是 **不应该** 变动的。
+* `detail`:针对该问题的高可读性解释，就像Title，这个字段的值可以被本地化。
+* `source`:一个包含错误源引用的对象，任选地包含下列任何成员：
+  * `pointer`:一个指向请求文档中的关联实体的JSON指针[[RFC6901](https://tools.ietf.org/html/rfc6901)]（例如`”/data”`是对应于一个主要数据对象，或`”/data/attributes/title”` 是对应于一个特定的属性）。
+  * `parameter`:一个是由URL查询参数引起错误的字符串。
+* `meta`:一个包含非标准元信息的[元对象][meta]。
 
 [resource objects]: #document-resource-objects
 [attributes]: #document-resource-object-attributes

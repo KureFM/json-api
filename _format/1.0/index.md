@@ -1395,7 +1395,7 @@ responses, in accordance with
 {%comment%}
 An endpoint **MAY** return resources related to the primary data by default.
 {%endcomment%}
-端点n **可以** 返回默认情况下与主数据相联的资源。
+端点 **可以** 返回默认情况下与主数据相联的资源。
 
 {%comment%}
 An endpoint **MAY** also support an `include` request parameter to allow the

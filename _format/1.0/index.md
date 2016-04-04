@@ -728,6 +728,7 @@ A complete example document with multiple included relationships:
 A [compound document] **MUST NOT** include more than one [resource object][resource objects] for
 each `type` and `id` pair.
 {% endcomment %}
+    
 > 注：在单个文档中，你会想到将将`type`和`id`作为组合键来唯一地索引另一个文档中的[资源对象][resource objects]。
 {% comment %}
 > Note: In a single document, you can think of the `type` and `id` as a

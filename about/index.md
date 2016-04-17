@@ -69,7 +69,7 @@ In general, Ember Data's goal is to eliminate the need for ad-hoc code
 per application to communicate with servers that communicate in a
 well-defined way.
 {% endcomment %}
-Ember Data的目标是通过使用明确定义的协议来消除应用程序中与服务器通信的代码。
+Ember Data的目标是通过使用明确定义的协议来免除应用程序中与服务器通信的代码。
 
 {% comment %}
 Some servers, like Firebase, Parse and CouchDB already define strict
